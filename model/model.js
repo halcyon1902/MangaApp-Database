@@ -50,7 +50,7 @@ const TruyenSchema = new mongoose.Schema({
   LuotTheoDoi: {
     type: Number,
   },
-  TacGias: [
+  TacGia: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "TacGia",
@@ -60,7 +60,7 @@ const TruyenSchema = new mongoose.Schema({
 });
 
 //tạo model
-let Truyen = mongoose.model("Truyen", TruyenSchema);
 let TacGia = mongoose.model("TacGia", TacGiaSchema);
+let Truyen = mongoose.model("Truyen", TruyenSchema);
 
 module.exports = { Truyen, TacGia };

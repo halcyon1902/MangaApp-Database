@@ -5,10 +5,10 @@ const TruyenController = {
     try {
       const newTruyen = new Truyen(req.body);
       const saveTruyen = await newTruyen.save();
-      // if (req.body.TacGia) {
-      //   const tacgia = TacGia.findById(req.body.TacGia);
-      //   await tacgia.updateOne({ $push: { Truyens: saveTruyen._id } }); // thêm id truyện vào tác giả
-      // }
+      if (req.body.TacGia) {
+        const tacgia = TacGia.findById(req.body.TacGia);
+        await tacgia.updateMany({ $push: { Truyens: saveTruyen._id } }); // thêm id truyện vào tác giả
+      }
       res.status(200).json(saveTruyen);
     } catch (err) {
       res.status(500).json(err);
