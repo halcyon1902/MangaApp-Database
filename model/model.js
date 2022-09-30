@@ -50,7 +50,7 @@ const TruyenSchema = new mongoose.Schema({
   LuotTheoDoi: {
     type: Number,
   },
-  TacGia: [
+  TacGias: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "TacGia",

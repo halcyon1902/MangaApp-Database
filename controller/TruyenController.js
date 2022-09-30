@@ -5,8 +5,8 @@ const TruyenController = {
     try {
       const newTruyen = new Truyen(req.body);
       const saveTruyen = await newTruyen.save();
-      if (req.body.TacGia) {
-        const tacgia = TacGia.findById(req.body.TacGia);
+      if (req.body.TacGias) {
+        const tacgia = TacGia.findById(req.body.TacGias);
         await tacgia.updateMany({ $push: { Truyens: saveTruyen._id } }); // thêm id truyện vào tác giả
       }
       res.status(200).json(saveTruyen);
@@ -19,6 +19,25 @@ const TruyenController = {
     try {
       const allTruyen = await Truyen.find();
       res.status(200).json(allTruyen);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+  //lấy thông tin 1 truyện
+  Get1Truyen: async (req, res) => {
+    try {
+      const truyen = await Truyen.findById(req.params.id).populate("TacGias");
+      res.status(200).json(truyen);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+  //cập nhật thông tin truyện
+  Update1Truyen: async (req, res) => {
+    try {
+      const truyen = await Truyen.findById(req.params.id);
+      await truyen.updateOne({ $set: req.body });
+      res.status(200).json("Updated successful");
     } catch (err) {
       res.status(500).json(err);
     }

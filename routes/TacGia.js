@@ -1,16 +1,13 @@
 const TacGiaController = require("../controller/TacGiaController");
 const router = require("express").Router();
 
-//Them tac gia
+//Thêm tác giả
 router.post("/", TacGiaController.AddTacGia);
-//get tac ca tat gia
+//Lấy toàn bộ thông tin tác giả
 router.get("/", TacGiaController.GetAllTacGia);
-// //get 1 tac gia
-// router.get("/:id", TacGiaController.Get1TacGia);
-// //update tac gua
-// router.put("/:id", TacGiaController.Update1TacGia);
-// //delte tac ia
-// router.delete("/:id", TacGiaController.DeleteTacGia);
-
+//Lấy thông tin 1 tác giả
+router.get("/:id", TacGiaController.Get1TacGia);
+//Cập nhật thông tin tác giả
+router.put("/:id", TacGiaController.Update1TacGia);
 //xuất router
 module.exports = router;

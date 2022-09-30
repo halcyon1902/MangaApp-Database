@@ -30,8 +30,8 @@ mongoose.connect(process.env.MONGODB_URL, () => {
 });
 
 //Routes
-app.use("/v1/tacgia", tacgiaRoute);
-app.use("/v1/truyen", truyenRoute);
+app.use("/v1/TacGia", tacgiaRoute);
+app.use("/v1/Truyen", truyenRoute);
 
 //
 app.listen(8000, () => {
