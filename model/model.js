@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-//
 const TacGiaSchema = new mongoose.Schema({
   TenTacGia: {
     type: String,
@@ -58,9 +57,31 @@ const TruyenSchema = new mongoose.Schema({
     },
   ],
 });
-
+const TaiKhoanSchema = new mongoose.Schema({
+  TaiKhoan: {
+    type: String,
+    required: true,
+  },
+  MatKhau: {
+    type: String,
+    required: true,
+  },
+  Email: {
+    type: String,
+    required: true,
+  },
+  PhanQuyen: {
+    type: Boolean,
+    required: true,
+  },
+  TrangThai: {
+    type: Boolean,
+    required: true,
+  },
+});
 //tạo model
 let TacGia = mongoose.model("TacGia", TacGiaSchema);
 let Truyen = mongoose.model("Truyen", TruyenSchema);
+let TaiKhoan = mongoose.model("TaiKhoan", TaiKhoanSchema);
 
-module.exports = { Truyen, TacGia };
+module.exports = { Truyen, TacGia, TaiKhoan };
