@@ -56,6 +56,13 @@ const TruyenSchema = new mongoose.Schema({
       required: true,
     },
   ],
+  Chapters: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Chapter",
+      required: true,
+    },
+  ],
 });
 const TaiKhoanSchema = new mongoose.Schema({
   TaiKhoan: {
@@ -79,9 +86,30 @@ const TaiKhoanSchema = new mongoose.Schema({
     required: true,
   },
 });
+const ChapterSchema = new mongoose.Schema({
+  TenChapter: {
+    type: String,
+    required: true,
+  },
+  NgayNhap: {
+    type: String,
+    required: true,
+  },
+  TrangThai: {
+    type: Boolean,
+    required: true,
+  },
+  Truyens: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Truyen",
+    },
+  ],
+});
 //tạo model
 let TacGia = mongoose.model("TacGia", TacGiaSchema);
 let Truyen = mongoose.model("Truyen", TruyenSchema);
 let TaiKhoan = mongoose.model("TaiKhoan", TaiKhoanSchema);
+let Chapter = mongoose.model("Chapter", ChapterSchema);
 
-module.exports = { Truyen, TacGia, TaiKhoan };
+module.exports = { Truyen, TacGia, TaiKhoan, Chapter };

@@ -1,15 +1,15 @@
-const { Truyen, TacGia } = require("../model/model");
-const TruyenController = {
-  //Thêm truyện
-  AddTruyen: async (req, res) => {
+const { Truyen, Chapter } = require("../model/model");
+const ChapterController = {
+  //Thêm Chapter
+  AddChapter: async (req, res) => {
     try {
-      const newTruyen = new Truyen(req.body);
-      const saveTruyen = await newTruyen.save();
-      if (req.body.TacGias) {
-        const tacgia = TacGia.findById(req.body.TacGias);
-        await tacgia.updateMany({ $push: { Truyens: saveTruyen._id } }); // thêm id truyện vào tác giả
+      const newChapter = new Chapter(req.body);
+      const saveChapter = await newChapter.save();
+      if (req.body.Truyens) {
+        const truyen = Truyen.findById(req.body.Truyens);
+        await truyen.updateMany({ $push: { Chapters: saveChapter._id } }); // thêm id chapter vào truyện
       }
-      res.status(200).json(saveTruyen);
+      res.status(200).json(saveChapter);
     } catch (err) {
       res.status(500).json(err);
     }

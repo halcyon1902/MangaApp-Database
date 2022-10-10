@@ -8,6 +8,7 @@ const dotenv = require("dotenv");
 const tacgiaRoute = require("./routes/TacGia");
 const truyenRoute = require("./routes/Truyen");
 const taikhoanRoute = require("./routes/TaiKhoan");
+const chapterRoute = require("./routes/Chapter");
 
 //Sử dụng để tạo file .env - sử dụng để tạo file chứa các thông tin mật
 dotenv.config();
@@ -34,6 +35,7 @@ mongoose.connect(process.env.MONGODB_URL, () => {
 app.use("/v1/TacGia", tacgiaRoute);
 app.use("/v1/Truyen", truyenRoute);
 app.use("/v1/TaiKhoan", taikhoanRoute);
+app.use("/v1/Chapter", chapterRoute);
 
 //
 app.listen(8000, () => {
