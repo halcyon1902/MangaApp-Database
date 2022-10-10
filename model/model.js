@@ -99,12 +99,16 @@ const ChapterSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
-  Truyens: [
+  Truyen: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Truyen",
     },
   ],
+  LinkAnh: {
+    type: [String],
+    required: true,
+  },
 });
 //tạo model
 let TacGia = mongoose.model("TacGia", TacGiaSchema);

@@ -4,11 +4,11 @@ const router = require("express").Router();
 
 //thêm chapter
 router.post("/", ChapterController.AddChapter);
-//Lấy toàn bộ thông tin truyện
-router.get("/", ChapterController.GetAllTruyen);
-//Lấy thông tin 1 truyện
-router.get("/:id", ChapterController.Get1Truyen);
-//Cập nhật thông tin truyện
-router.put("/:id", ChapterController.Update1Truyen);
+//Lấy toàn bộ thông tin chapter
+router.get("/", ChapterController.GetAllChapter);
+//Lấy thông tin 1 chapter
+router.get("/:id", ChapterController.Get1Chapter);
+//Cập nhật chapter
+router.put("/:id", ChapterController.Update1Chapter);
 //xuất router
 module.exports = router;
