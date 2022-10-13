@@ -14,19 +14,19 @@ const ChapterController = {
       res.status(500).json(err);
     }
   },
-  //lấy toàn bộ chapter
-  GetAllChapter: async (req, res) => {
-    try {
-      const allChapter = await Chapter.find();
-      res.status(200).json(allChapter);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  },
+  // //lấy toàn bộ chapter
+  // GetAllChapter: async (req, res) => {
+  //   try {
+  //     const allChapter = await Chapter.find();
+  //     res.status(200).json(allChapter);
+  //   } catch (err) {
+  //     res.status(500).json(err);
+  //   }
+  // },
   //lấy thông tin 1 chapter
   Get1Chapter: async (req, res) => {
     try {
-      const chapter = await Chapter.findById(req.params.id).populate("Truyen");
+      const chapter = await Chapter.findById(req.params.id);
       res.status(200).json(chapter);
     } catch (err) {
       res.status(500).json(err);

@@ -9,6 +9,7 @@ const tacgiaRoute = require("./routes/TacGia");
 const truyenRoute = require("./routes/Truyen");
 const taikhoanRoute = require("./routes/TaiKhoan");
 const chapterRoute = require("./routes/Chapter");
+const binhluanRoute = require("./routes/BinhLuan");
 
 //Sử dụng để tạo file .env - sử dụng để tạo file chứa các thông tin mật
 dotenv.config();
@@ -36,6 +37,7 @@ app.use("/v1/TacGia", tacgiaRoute);
 app.use("/v1/Truyen", truyenRoute);
 app.use("/v1/TaiKhoan", taikhoanRoute);
 app.use("/v1/Chapter", chapterRoute);
+app.use("/v1/BinhLuan", binhluanRoute);
 
 //
 app.listen(8000, () => {

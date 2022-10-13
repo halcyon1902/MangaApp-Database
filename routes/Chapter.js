@@ -4,8 +4,8 @@ const router = require("express").Router();
 
 //thêm chapter
 router.post("/", ChapterController.AddChapter);
-//Lấy toàn bộ thông tin chapter
-router.get("/", ChapterController.GetAllChapter);
+// //Lấy toàn bộ thông tin chapter
+// router.get("/", ChapterController.GetAllChapter);
 //Lấy thông tin 1 chapter
 router.get("/:id", ChapterController.Get1Chapter);
 //Cập nhật chapter
