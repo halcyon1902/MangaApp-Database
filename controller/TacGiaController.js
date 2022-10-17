@@ -22,7 +22,7 @@ const TacGiaController = {
   //Lấy thông tin 1 tác giả
   Get1TacGia: async (req, res) => {
     try {
-      const tacgia = await TacGia.findById(req.params.id).populate("Truyens"); // params la dấu chấm
+      const tacgia = await TacGia.findById(req.params.id); //.populate("Truyens"); // params la dấu chấm
       res.status(200).json(tacgia);
     } catch (err) {
       res.status(500).json(err);

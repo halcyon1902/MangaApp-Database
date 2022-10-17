@@ -10,5 +10,7 @@ router.get("/", TruyenController.GetAllTruyen);
 router.get("/:id", TruyenController.Get1Truyen);
 //Cập nhật thông tin truyện
 router.put("/:id", TruyenController.Update1Truyen);
+//Tìm kiếm theo thể loại
+router.get("/", TruyenController.Find1TheLoai);
 //xuất router
 module.exports = router;

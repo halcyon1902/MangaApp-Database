@@ -33,13 +33,13 @@ mongoose.connect(process.env.MONGODB_URL, () => {
 });
 
 //Routes
-app.use("/v1/TacGia", tacgiaRoute);
-app.use("/v1/Truyen", truyenRoute);
-app.use("/v1/TaiKhoan", taikhoanRoute);
-app.use("/v1/Chapter", chapterRoute);
-app.use("/v1/BinhLuan", binhluanRoute);
+app.use("/TacGia", tacgiaRoute);
+app.use("/Truyen", truyenRoute);
+app.use("/TaiKhoan", taikhoanRoute);
+app.use("/Chapter", chapterRoute);
+app.use("/BinhLuan", binhluanRoute);
 
-//
+//kiểm tra port hoạt động ở 8000
 app.listen(8000, () => {
   console.log("Server is running");
 });

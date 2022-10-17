@@ -9,12 +9,12 @@ const TacGiaSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
-  Truyens: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Truyen",
-    },
-  ],
+  // Truyens: [
+  //   {
+  //     type: mongoose.Schema.Types.ObjectId,
+  //     ref: "Truyen",
+  //   },
+  // ],
 });
 const TruyenSchema = new mongoose.Schema({
   TenTruyen: {
@@ -77,6 +77,11 @@ const TaiKhoanSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  NgayTao: {
+    type: Date,
+    default: Date.now,
+    required: true,
+  },
   PhanQuyen: {
     type: Boolean,
     required: true,
@@ -87,7 +92,6 @@ const TaiKhoanSchema = new mongoose.Schema({
   },
   BinhLuans: {
     type: [String],
-    required: true,
   },
 });
 const ChapterSchema = new mongoose.Schema({
@@ -96,7 +100,8 @@ const ChapterSchema = new mongoose.Schema({
     required: true,
   },
   NgayNhap: {
-    type: String,
+    type: Date,
+    default: Date.now,
     required: true,
   },
   TrangThai: {
@@ -123,6 +128,11 @@ const BinhLuanSchema = new mongoose.Schema({
   },
   TrangThai: {
     type: Boolean,
+    required: true,
+  },
+  NgayNhap: {
+    type: Date,
+    default: Date.now,
     required: true,
   },
   //thêm vào chapter
