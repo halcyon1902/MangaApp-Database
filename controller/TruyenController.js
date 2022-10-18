@@ -43,6 +43,7 @@ const TruyenController = {
       res.status(500).json(err);
     }
   },
+  //tìm kiếm truyện theo tên và thể loại
   SearchTruyen: async (req, res) => {
     try {
       let data = await Truyen.find({
