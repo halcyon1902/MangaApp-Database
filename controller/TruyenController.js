@@ -43,11 +43,15 @@ const TruyenController = {
       res.status(500).json(err);
     }
   },
-  Find1TheLoai: async (req, res) => {
+  SearchTruyen: async (req, res) => {
     try {
-      const truyen = await Truyen.find();
-      truyen.where("TheLoai", Action);
-      res.status(200).json(truyen);
+      let data = await Truyen.find({
+        $or: [
+          { TheLoai: { $regex: req.params.key } },
+          { TenTruyen: { $regex: req.params.key } },
+        ],
+      });
+      res.status(200).json(data);
     } catch (err) {
       res.status(500).json(err);
     }
