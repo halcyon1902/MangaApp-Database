@@ -1,4 +1,4 @@
-const { Truyen, TacGia } = require("../model/model");
+const { Truyen, TacGia, TheLoai } = require("../model/model");
 const TruyenController = {
   //Thêm truyện
   AddTruyen: async (req, res) => {
@@ -46,13 +46,58 @@ const TruyenController = {
   //tìm kiếm truyện theo tên và thể loại
   SearchTruyen: async (req, res) => {
     try {
-      let data = await Truyen.find({
-        $or: [
-          { TheLoai: { $regex: req.params.key } },
-          { TenTruyen: { $regex: req.params.key } },
-        ],
-      });
+        let data = await Truyen.find({
+          $or: [
+             { TenTruyen: { $regex: req.params.key, $options: 'i'} }, // $option: 'i' => để k phân biệt chữ hoa thư
+          ],
+        });
       res.status(200).json(data);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  
+  },
+//===================tìm kiếm truyện theo tác giả=================
+  SearchTruyenTheoTacGia: async (req, res) => {
+    try {
+      const tacgia = await TacGia.findOne( {TenTacGia :  req.params.key});
+
+      if(tacgia != null){
+        let data1 = await Truyen.find({
+            TacGias: tacgia.id ,
+        });
+        if(data1.length ==0) 
+         res.status(200).json("tác giả không có truyện");
+        else
+        res.status(200).json(data1);
+      }
+      else{
+        res.status(200).json("Tên tác giả không tồn tại");
+      }
+        
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+  //===================tìm kiếm truyện theo thể loại=================
+  SearchTruyenTheoTheLoai: async (req, res) => {
+    try {
+      // const theloai = await TheLoai.findOne({TenTheLoai : { $regex: req.params.key, $options: 'i'}});
+      const theloai = await TheLoai.findOne({TenTheLoai :  req.params.key});
+
+      if(theloai != null){
+        let data = await Truyen.find({
+          TheLoai:  theloai.id ,
+        });
+        if(data.length ==0) 
+          res.status(200).json("Thể lọakhông có truyện");
+        else
+         res.status(200).json(data);
+      }
+      else{
+        res.status(200).json("Thể Loại không tồn tại");
+      }
+        
     } catch (err) {
       res.status(500).json(err);
     }

@@ -12,5 +12,10 @@ router.get("/:id", TruyenController.Get1Truyen);
 router.put("/:id", TruyenController.Update1Truyen);
 //Tìm kiếm theo thể loại và tên
 router.get("/search/:key", TruyenController.SearchTruyen);
+//Tìm kiếm theo tên tác giả
+router.get("/SearchTruyenTheoTacGia/:key", TruyenController.SearchTruyenTheoTacGia);
+//Tìm Kiếm truyện theo thể loại
+router.get("/SearchTruyenTheoTheLoai/:key", TruyenController.SearchTruyenTheoTheLoai);
+
 //xuất router
 module.exports = router;
