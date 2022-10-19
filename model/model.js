@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+//==============================Tacgia=====================
 const TacGiaSchema = new mongoose.Schema({
   TenTacGia: {
     type: String,
@@ -16,6 +16,18 @@ const TacGiaSchema = new mongoose.Schema({
   //   },
   // ],
 });
+//==============================The loai=====================
+const TheLoaiSchema = new mongoose.Schema({
+  TenTheLoai: {
+    type: String,
+    required: true,
+  },
+  TrangThai: {
+    type: Boolean,
+    required: true,
+  },
+});
+// ========================== truyen==============================
 const TruyenSchema = new mongoose.Schema({
   TenTruyen: {
     type: String,
@@ -51,8 +63,7 @@ const TruyenSchema = new mongoose.Schema({
   },
   TacGias: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "TacGia",
+      type: String,
       required: true,
     },
   ],
@@ -64,6 +75,7 @@ const TruyenSchema = new mongoose.Schema({
     },
   ],
 });
+//==============================Tai Khoan=====================
 const TaiKhoanSchema = new mongoose.Schema({
   TaiKhoan: {
     type: String,
@@ -94,6 +106,9 @@ const TaiKhoanSchema = new mongoose.Schema({
     type: [String],
   },
 });
+
+//==============================Chapter=====================
+
 const ChapterSchema = new mongoose.Schema({
   TenChapter: {
     type: String,
@@ -121,6 +136,9 @@ const ChapterSchema = new mongoose.Schema({
     required: true,
   },
 });
+
+//==============================Binh Luan=====================
+
 const BinhLuanSchema = new mongoose.Schema({
   NoiDungBL: {
     type: String,
@@ -151,4 +169,5 @@ let Truyen = mongoose.model("Truyen", TruyenSchema);
 let TaiKhoan = mongoose.model("TaiKhoan", TaiKhoanSchema);
 let Chapter = mongoose.model("Chapter", ChapterSchema);
 let BinhLuan = mongoose.model("BinhLuan", BinhLuanSchema);
-module.exports = { Truyen, TacGia, TaiKhoan, Chapter, BinhLuan };
+let TheLoai = mongoose.model("TheLoai", TheLoaiSchema);
+module.exports = { Truyen, TacGia, TaiKhoan, Chapter, BinhLuan, TheLoai };
