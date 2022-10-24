@@ -9,7 +9,8 @@ const TheLoaiController = {
     } catch (err) {
       res.status(500).json(err);
     }
-  }, //Lấy toàn bộ Thể loại
+  },
+  //Lấy toàn bộ Thể loại
   GetAllTheLoai: async (req, res) => {
     try {
       const theloai = await TheLoai.find();

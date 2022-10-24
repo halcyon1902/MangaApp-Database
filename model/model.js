@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-//==============================Tacgia=====================
+//tạo schema Tác giả
 const TacGiaSchema = new mongoose.Schema({
   TenTacGia: {
     type: String,
@@ -16,7 +16,7 @@ const TacGiaSchema = new mongoose.Schema({
   //   },
   // ],
 });
-//==============================The loai=====================
+//tạo schema Thể loại
 const TheLoaiSchema = new mongoose.Schema({
   TenTheLoai: {
     type: String,
@@ -27,7 +27,7 @@ const TheLoaiSchema = new mongoose.Schema({
     required: true,
   },
 });
-// ========================== truyen==============================
+//tạo schema Truyện
 const TruyenSchema = new mongoose.Schema({
   TenTruyen: {
     type: String,
@@ -75,7 +75,7 @@ const TruyenSchema = new mongoose.Schema({
     },
   ],
 });
-//==============================Tai Khoan=====================
+//tạo schema Tài khoản
 const TaiKhoanSchema = new mongoose.Schema({
   TaiKhoan: {
     type: String,
@@ -106,9 +106,7 @@ const TaiKhoanSchema = new mongoose.Schema({
     type: [String],
   },
 });
-
-//==============================Chapter=====================
-
+//tạo schema Chapter
 const ChapterSchema = new mongoose.Schema({
   TenChapter: {
     type: String,
@@ -136,9 +134,7 @@ const ChapterSchema = new mongoose.Schema({
     required: true,
   },
 });
-
-//==============================Binh Luan=====================
-
+//tạo schema Bình luận
 const BinhLuanSchema = new mongoose.Schema({
   NoiDungBL: {
     type: String,
@@ -163,6 +159,7 @@ const BinhLuanSchema = new mongoose.Schema({
     ref: "TaiKhoan",
   },
 });
+
 //tạo model
 let TacGia = mongoose.model("TacGia", TacGiaSchema);
 let Truyen = mongoose.model("Truyen", TruyenSchema);
