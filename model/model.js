@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+//tạo schema Tác giả
 const TacGiaSchema = new mongoose.Schema({
   TenTacGia: {
     type: String,
@@ -16,6 +16,18 @@ const TacGiaSchema = new mongoose.Schema({
   //   },
   // ],
 });
+//tạo schema Thể loại
+const TheLoaiSchema = new mongoose.Schema({
+  TenTheLoai: {
+    type: String,
+    required: true,
+  },
+  TrangThai: {
+    type: Boolean,
+    required: true,
+  },
+});
+//tạo schema Truyện
 const TruyenSchema = new mongoose.Schema({
   TenTruyen: {
     type: String,
@@ -51,8 +63,7 @@ const TruyenSchema = new mongoose.Schema({
   },
   TacGias: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "TacGia",
+      type: String,
       required: true,
     },
   ],
@@ -64,6 +75,7 @@ const TruyenSchema = new mongoose.Schema({
     },
   ],
 });
+//tạo schema Tài khoản
 const TaiKhoanSchema = new mongoose.Schema({
   TaiKhoan: {
     type: String,
@@ -94,6 +106,7 @@ const TaiKhoanSchema = new mongoose.Schema({
     type: [String],
   },
 });
+//tạo schema Chapter
 const ChapterSchema = new mongoose.Schema({
   TenChapter: {
     type: String,
@@ -121,6 +134,7 @@ const ChapterSchema = new mongoose.Schema({
     required: true,
   },
 });
+//tạo schema Bình luận
 const BinhLuanSchema = new mongoose.Schema({
   NoiDungBL: {
     type: String,
@@ -145,10 +159,12 @@ const BinhLuanSchema = new mongoose.Schema({
     ref: "TaiKhoan",
   },
 });
+
 //tạo model
 let TacGia = mongoose.model("TacGia", TacGiaSchema);
 let Truyen = mongoose.model("Truyen", TruyenSchema);
 let TaiKhoan = mongoose.model("TaiKhoan", TaiKhoanSchema);
 let Chapter = mongoose.model("Chapter", ChapterSchema);
 let BinhLuan = mongoose.model("BinhLuan", BinhLuanSchema);
-module.exports = { Truyen, TacGia, TaiKhoan, Chapter, BinhLuan };
+let TheLoai = mongoose.model("TheLoai", TheLoaiSchema);
+module.exports = { Truyen, TacGia, TaiKhoan, Chapter, BinhLuan, TheLoai };

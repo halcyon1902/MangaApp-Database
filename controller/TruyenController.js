@@ -1,15 +1,10 @@
-const { Truyen, TacGia } = require("../model/model");
+const { Truyen, TacGia, TheLoai } = require("../model/model");
 const TruyenController = {
   //Thêm truyện
   AddTruyen: async (req, res) => {
     try {
       const newTruyen = new Truyen(req.body);
       const saveTruyen = await newTruyen.save();
-      // thêm id truyện vào tác giả
-      // if (req.body.TacGias) {
-      //   const tacgia = TacGia.findById(req.body.TacGias);
-      //   await tacgia.updateMany({ $push: { Truyens: saveTruyen._id } });
-      // }
       res.status(200).json(saveTruyen);
     } catch (err) {
       res.status(500).json(err);
@@ -36,6 +31,7 @@ const TruyenController = {
   //cập nhật thông tin truyện
   Update1Truyen: async (req, res) => {
     try {
+      // const là chúng ta sẽ không thể tái khai báo hay cập nhật giá trị mới để thay thế cho giá trị trước đó của biến.
       const truyen = await Truyen.findById(req.params.id);
       await truyen.updateOne({ $set: req.body });
       res.status(200).json("Updated successful");
@@ -43,21 +39,59 @@ const TruyenController = {
       res.status(500).json(err);
     }
   },
-  //tìm kiếm truyện theo tên và thể loại
+  //tìm kiếm truyện theo tên truyện
   SearchTruyen: async (req, res) => {
     try {
+      // let cho phép chúng ta cập nhật giá trị của biến chứ không cho phép chúng ta tái khái báo lại biến đó.
       let data = await Truyen.find({
         $or: [
-          { TheLoai: { $regex: req.params.key } },
-          { TenTruyen: { $regex: req.params.key } },
+          { TenTruyen: { $regex: req.params.key, $options: "i" } }, // $option: 'i' => để k phân biệt chữ hoa - thường
         ],
       });
-      res.status(200).json(data);
+      if (data != null) {
+        res.status(200).json(data);
+      } else {
+        res.status(200).json("Không Tìm Thấy Kết Quả!");
+      }
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+  //Tìm kiếm truyện theo tác giả
+  SearchTruyenTheoTacGia: async (req, res) => {
+    try {
+      const tacgia = await TacGia.findOne({ TenTacGia: req.params.key });
+      if (tacgia != null) {
+        let data = await Truyen.find({ TacGias: tacgia.id });
+        if (data.length == 0) {
+          res.status(200).json("tác giả không có truyện");
+        } else {
+          res.status(200).json(data);
+        }
+      } else {
+        res.status(200).json("Tác giả không tồn tại");
+      }
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+  //Tìm kiếm truyện theo thể loại
+  SearchTruyenTheoTheLoai: async (req, res) => {
+    try {
+      const theloai = await TheLoai.findOne({ TenTheLoai: req.params.key });
+      if (theloai != null) {
+        let data = await Truyen.find({
+          TheLoai: theloai.id,
+        });
+        if (data.length == 0) res.status(200).json("Thể lọai không có truyện");
+        else res.status(200).json(data);
+      } else {
+        res.status(200).json("Thể Loại không tồn tại");
+      }
     } catch (err) {
       res.status(500).json(err);
     }
   },
 };
-
 //xuất router
 module.exports = TruyenController;

@@ -10,8 +10,9 @@ const truyenRoute = require("./routes/Truyen");
 const taikhoanRoute = require("./routes/TaiKhoan");
 const chapterRoute = require("./routes/Chapter");
 const binhluanRoute = require("./routes/BinhLuan");
+const theloaiRoute = require("./routes/TheLoai");
 
-//Sử dụng để tạo file .env - sử dụng để tạo file chứa các thông tin mật
+//Sử dụng để tạo file .env - sử dụng để tạo file chứa các thông tin cần bảo mật
 dotenv.config();
 
 //bodyParser phân tích dữ liệu và đưa vào document => lấy data form từ req.body
@@ -22,11 +23,6 @@ app.use(cors());
 // khi send request sẽ thông báo dưới terminal
 app.use(morgan("common"));
 
-//test duong dan
-app.get("/test", (req, res) => {
-  res.status(200).json("Server kết nối thành công");
-});
-
 //Connect Database
 mongoose.connect(process.env.MONGODB_URL, () => {
   console.log("Connected to MongoDB successful");
@@ -34,6 +30,7 @@ mongoose.connect(process.env.MONGODB_URL, () => {
 
 //Routes
 app.use("/TacGia", tacgiaRoute);
+app.use("/TheLoai", theloaiRoute);
 app.use("/Truyen", truyenRoute);
 app.use("/TaiKhoan", taikhoanRoute);
 app.use("/Chapter", chapterRoute);
