@@ -1,4 +1,4 @@
-const { Truyen, TacGia, TheLoai } = require("../model/model");
+const { Truyen, TacGia } = require("../model/model");
 const TruyenController = {
   //Thêm truyện
   AddTruyen: async (req, res) => {
@@ -42,6 +42,7 @@ const TruyenController = {
   //tìm kiếm truyện theo tên truyện
   SearchTruyen: async (req, res) => {
     try {
+<<<<<<< HEAD
       // let cho phép chúng ta cập nhật giá trị của biến chứ không cho phép chúng ta tái khái báo lại biến đó.
       let data = await Truyen.find({
         $or: [
@@ -91,6 +92,18 @@ const TruyenController = {
     } catch (err) {
       res.status(500).json(err);
     }
+=======
+      let data = await Truyen.find({
+        $or: [
+          { TheLoai: { $regex: req.params.key } },
+          { TenTruyen: { $regex: req.params.key } },
+        ],
+      });
+      res.status(200).json(data);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+>>>>>>> parent of 2f2b74d (9 search truyện theo tác giả, thể loaijk, tên truyện)
   },
 };
 //xuất router

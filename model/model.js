@@ -1,5 +1,9 @@
 const mongoose = require("mongoose");
+<<<<<<< HEAD
 //tạo schema Tác giả
+=======
+
+>>>>>>> parent of 2f2b74d (9 search truyện theo tác giả, thể loaijk, tên truyện)
 const TacGiaSchema = new mongoose.Schema({
   TenTacGia: {
     type: String,
@@ -16,6 +20,7 @@ const TacGiaSchema = new mongoose.Schema({
   //   },
   // ],
 });
+<<<<<<< HEAD
 //tạo schema Thể loại
 const TheLoaiSchema = new mongoose.Schema({
   TenTheLoai: {
@@ -28,6 +33,8 @@ const TheLoaiSchema = new mongoose.Schema({
   },
 });
 //tạo schema Truyện
+=======
+>>>>>>> parent of 2f2b74d (9 search truyện theo tác giả, thể loaijk, tên truyện)
 const TruyenSchema = new mongoose.Schema({
   TenTruyen: {
     type: String,
@@ -63,7 +70,8 @@ const TruyenSchema = new mongoose.Schema({
   },
   TacGias: [
     {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "TacGia",
       required: true,
     },
   ],
@@ -75,7 +83,10 @@ const TruyenSchema = new mongoose.Schema({
     },
   ],
 });
+<<<<<<< HEAD
 //tạo schema Tài khoản
+=======
+>>>>>>> parent of 2f2b74d (9 search truyện theo tác giả, thể loaijk, tên truyện)
 const TaiKhoanSchema = new mongoose.Schema({
   TaiKhoan: {
     type: String,
@@ -106,7 +117,10 @@ const TaiKhoanSchema = new mongoose.Schema({
     type: [String],
   },
 });
+<<<<<<< HEAD
 //tạo schema Chapter
+=======
+>>>>>>> parent of 2f2b74d (9 search truyện theo tác giả, thể loaijk, tên truyện)
 const ChapterSchema = new mongoose.Schema({
   TenChapter: {
     type: String,
@@ -134,7 +148,10 @@ const ChapterSchema = new mongoose.Schema({
     required: true,
   },
 });
+<<<<<<< HEAD
 //tạo schema Bình luận
+=======
+>>>>>>> parent of 2f2b74d (9 search truyện theo tác giả, thể loaijk, tên truyện)
 const BinhLuanSchema = new mongoose.Schema({
   NoiDungBL: {
     type: String,
@@ -166,5 +183,4 @@ let Truyen = mongoose.model("Truyen", TruyenSchema);
 let TaiKhoan = mongoose.model("TaiKhoan", TaiKhoanSchema);
 let Chapter = mongoose.model("Chapter", ChapterSchema);
 let BinhLuan = mongoose.model("BinhLuan", BinhLuanSchema);
-let TheLoai = mongoose.model("TheLoai", TheLoaiSchema);
-module.exports = { Truyen, TacGia, TaiKhoan, Chapter, BinhLuan, TheLoai };
+module.exports = { Truyen, TacGia, TaiKhoan, Chapter, BinhLuan };
