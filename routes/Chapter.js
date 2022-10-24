@@ -1,7 +1,5 @@
 const ChapterController = require("../controller/ChapterController");
-
 const router = require("express").Router();
-
 //thêm chapter
 router.post("/", ChapterController.AddChapter);
 // //Lấy toàn bộ thông tin chapter
