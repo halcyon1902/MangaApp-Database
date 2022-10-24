@@ -1,9 +1,5 @@
 const mongoose = require("mongoose");
-<<<<<<< HEAD
-//tạo schema Tác giả
-=======
 
->>>>>>> parent of 2f2b74d (9 search truyện theo tác giả, thể loaijk, tên truyện)
 const TacGiaSchema = new mongoose.Schema({
   TenTacGia: {
     type: String,
@@ -20,21 +16,6 @@ const TacGiaSchema = new mongoose.Schema({
   //   },
   // ],
 });
-<<<<<<< HEAD
-//tạo schema Thể loại
-const TheLoaiSchema = new mongoose.Schema({
-  TenTheLoai: {
-    type: String,
-    required: true,
-  },
-  TrangThai: {
-    type: Boolean,
-    required: true,
-  },
-});
-//tạo schema Truyện
-=======
->>>>>>> parent of 2f2b74d (9 search truyện theo tác giả, thể loaijk, tên truyện)
 const TruyenSchema = new mongoose.Schema({
   TenTruyen: {
     type: String,
@@ -83,10 +64,6 @@ const TruyenSchema = new mongoose.Schema({
     },
   ],
 });
-<<<<<<< HEAD
-//tạo schema Tài khoản
-=======
->>>>>>> parent of 2f2b74d (9 search truyện theo tác giả, thể loaijk, tên truyện)
 const TaiKhoanSchema = new mongoose.Schema({
   TaiKhoan: {
     type: String,
@@ -117,10 +94,6 @@ const TaiKhoanSchema = new mongoose.Schema({
     type: [String],
   },
 });
-<<<<<<< HEAD
-//tạo schema Chapter
-=======
->>>>>>> parent of 2f2b74d (9 search truyện theo tác giả, thể loaijk, tên truyện)
 const ChapterSchema = new mongoose.Schema({
   TenChapter: {
     type: String,
@@ -148,10 +121,6 @@ const ChapterSchema = new mongoose.Schema({
     required: true,
   },
 });
-<<<<<<< HEAD
-//tạo schema Bình luận
-=======
->>>>>>> parent of 2f2b74d (9 search truyện theo tác giả, thể loaijk, tên truyện)
 const BinhLuanSchema = new mongoose.Schema({
   NoiDungBL: {
     type: String,
@@ -176,7 +145,6 @@ const BinhLuanSchema = new mongoose.Schema({
     ref: "TaiKhoan",
   },
 });
-
 //tạo model
 let TacGia = mongoose.model("TacGia", TacGiaSchema);
 let Truyen = mongoose.model("Truyen", TruyenSchema);

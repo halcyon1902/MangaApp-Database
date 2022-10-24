@@ -42,5 +42,6 @@ const ChapterController = {
   // },
   //lấy thông tin 1 chapter
 };
+
 //xuất router
 module.exports = ChapterController;
