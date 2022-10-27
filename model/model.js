@@ -9,12 +9,6 @@ const TacGiaSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
-  // Truyens: [
-  //   {
-  //     type: mongoose.Schema.Types.ObjectId,
-  //     ref: "Truyen",
-  //   },
-  // ],
 });
 //tạo schema Thể loại
 const TheLoaiSchema = new mongoose.Schema({
@@ -96,6 +90,7 @@ const TaiKhoanSchema = new mongoose.Schema({
   },
   PhanQuyen: {
     type: Boolean,
+    default: false,
     required: true,
   },
   TrangThai: {

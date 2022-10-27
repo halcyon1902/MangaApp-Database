@@ -31,16 +31,7 @@ const ChapterController = {
     } catch (err) {
       res.status(500).json(err);
     }
-  }, // //lấy toàn bộ chapter
-  // GetAllChapter: async (req, res) => {
-  //   try {
-  //     const allChapter = await Chapter.find();
-  //     res.status(200).json(allChapter);
-  //   } catch (err) {
-  //     res.status(500).json(err);
-  //   }
-  // },
-  //lấy thông tin 1 chapter
+  },
 };
 //xuất router
 module.exports = ChapterController;
