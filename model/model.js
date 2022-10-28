@@ -84,8 +84,7 @@ const TaiKhoanSchema = new mongoose.Schema({
     required: true,
   },
   NgayTao: {
-    type: Date,
-    default: Date.now,
+    type: String,
     required: true,
   },
   PhanQuyen: {
