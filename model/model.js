@@ -122,17 +122,19 @@ const ChapterSchema = new mongoose.Schema({
     required: true,
   },
   Truyen: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Truyen",
+    type: String,
   },
   LinkAnh: {
     type: [String],
     required: true,
   },
-  BinhLuans: {
-    type: [String],
+  BinhLuans: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "BinhLuan",
+    // type: String,
+    // type: [String],
     required: true,
-  },
+  }],
 });
 //tạo schema Bình luận
 const BinhLuanSchema = new mongoose.Schema({
@@ -151,8 +153,10 @@ const BinhLuanSchema = new mongoose.Schema({
   },
   //thêm vào chapter
   Chapter: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Chapter",
+    // type: mongoose.Schema.Types.ObjectId,
+    // ref: "Chapter",
+    type: String,
+    required: true
   },
   TaiKhoan: {
     type: mongoose.Schema.Types.ObjectId,
