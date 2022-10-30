@@ -16,7 +16,12 @@ const ChapterController = {
   },
   Get1Chapter: async (req, res) => {
     try {
-      const chapter = await Chapter.findById(req.params.id);
+      const chapter = await Chapter.findById(req.params.id)
+      .populate("BinhLuans")
+      .populate({
+        path: "BinhLuans",
+        populate: {path: "TaiKhoan"}
+      });
       res.status(200).json(chapter);
     } catch (err) {
       res.status(500).json(err);

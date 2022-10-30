@@ -1,4 +1,4 @@
-const { Truyen, TacGia, TheLoai } = require("../model/model");
+const { Truyen, TacGia, TheLoai, Chapter, TaiKhoan } = require("../model/model");
 const TruyenController = {
   //Thêm truyện
   AddTruyen: async (req, res) => {
@@ -13,7 +13,17 @@ const TruyenController = {
   //lấy toàn bộ truyện
   GetAllTruyen: async (req, res) => {
     try {
-      const allTruyen = await Truyen.find();
+      const allTruyen = await Truyen.find().populate("Chapters")
+      .populate({
+        path: "Chapters",
+        populate: {path: "BinhLuans"
+      }})
+      .populate({
+        path: "Chapters",
+        populate: {
+          path: "BinhLuans",
+          populate:{path: "TaiKhoan"}
+      }});
       res.status(200).json(allTruyen);
     } catch (err) {
       res.status(500).json(err);
@@ -22,7 +32,18 @@ const TruyenController = {
   //lấy thông tin 1 truyện
   Get1Truyen: async (req, res) => {
     try {
-      const truyen = await Truyen.findById(req.params.id).populate("TacGias");
+      const truyen = await Truyen.findById(req.params.id)
+        .populate("Chapters")
+        .populate({
+          path: "Chapters",
+          populate: {path: "BinhLuans"
+        }})
+        .populate({
+          path: "Chapters",
+          populate: {
+            path: "BinhLuans",
+            populate:{path: "TaiKhoan"}
+        }})
       res.status(200).json(truyen);
     } catch (err) {
       res.status(500).json(err);
