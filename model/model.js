@@ -27,7 +27,7 @@ const TruyenSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  TheLoai: {
+  TheLoais: {
     type: [String],
     required: true,
   },
@@ -118,7 +118,7 @@ const ChapterSchema = new mongoose.Schema({
   Truyen: {
     type: String,
   },
-  LinkAnh: {
+  LinkAnhs: {
     type: [String],
     required: true,
   },
