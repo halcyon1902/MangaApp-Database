@@ -64,16 +64,50 @@ const TruyenController = {
   SearchTruyen: async (req, res) => {
     try {
       // let cho phép chúng ta cập nhật giá trị của biến chứ không cho phép chúng ta tái khái báo lại biến đó.
-      let data = await Truyen.find({
-        $or: [
-          { TenTruyen: { $regex: req.params.key, $options: "i" } }, // $option: 'i' => để k phân biệt chữ hoa - thường
-        ],
-      });
-      if (data != null) {
-        res.status(200).json(data);
+      const tacgia = await TacGia.findOne({ TenTacGia: req.params.key });
+
+      // neu params la ten tac gia
+      if (tacgia != null) {
+        let data = await Truyen.find({ TacGias: tacgia.id }).populate("Chapters")
+      .populate({
+        path: "Chapters",
+        populate: {path: "BinhLuans"
+      }})
+      .populate({
+        path: "Chapters",
+        populate: {
+          path: "BinhLuans",
+          populate:{path: "TaiKhoan"}
+      }});
+        if (data.length == 0) {
+          res.status(200).json("tác giả không có truyện");
+        } else {
+          res.status(200).json(data);
+        }
       } else {
-        res.status(200).json("Không Tìm Thấy Kết Quả!");
+        //neu params la ten truyen
+        let data = await Truyen.find({
+          $or: [
+            { TenTruyen: { $regex: req.params.key, $options: "i" } }, // $option: 'i' => để k phân biệt chữ hoa - thường
+          ],
+        }).populate("Chapters")
+        .populate({
+          path: "Chapters",
+          populate: {path: "BinhLuans"
+        }})
+        .populate({
+          path: "Chapters",
+          populate: {
+            path: "BinhLuans",
+            populate:{path: "TaiKhoan"}
+        }});
+        if (data != null) {
+          res.status(200).json(data);
+        } else {
+          res.status(200).json("Không Tìm Thấy Kết Quả!");
+        }
       }
+      
     } catch (err) {
       res.status(500).json(err);
     }
@@ -83,7 +117,17 @@ const TruyenController = {
     try {
       const tacgia = await TacGia.findOne({ TenTacGia: req.params.key });
       if (tacgia != null) {
-        let data = await Truyen.find({ TacGias: tacgia.id });
+        let data = await Truyen.find({ TacGias: tacgia.id }).populate("Chapters")
+      .populate({
+        path: "Chapters",
+        populate: {path: "BinhLuans"
+      }})
+      .populate({
+        path: "Chapters",
+        populate: {
+          path: "BinhLuans",
+          populate:{path: "TaiKhoan"}
+      }});
         if (data.length == 0) {
           res.status(200).json("tác giả không có truyện");
         } else {
@@ -102,8 +146,18 @@ const TruyenController = {
       const theloai = await TheLoai.findOne({ TenTheLoai: req.params.key });
       if (theloai != null) {
         let data = await Truyen.find({
-          TheLoai: theloai.id,
-        });
+          TheLoais: theloai.id,
+        }).populate("Chapters")
+        .populate({
+          path: "Chapters",
+          populate: {path: "BinhLuans"
+        }})
+        .populate({
+          path: "Chapters",
+          populate: {
+            path: "BinhLuans",
+            populate:{path: "TaiKhoan"}
+        }});
         if (data.length == 0) res.status(200).json("Thể lọai không có truyện");
         else res.status(200).json(data);
       } else {
