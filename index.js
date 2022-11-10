@@ -22,7 +22,10 @@ app.use(bodyParser.json({ limit: "50mb" }));
 app.use(cors());
 // khi send request sẽ thông báo dưới terminal
 app.use(morgan("common"));
-
+//test khi server host web thành công
+app.get("/", (req, res) => {
+  res.status(200).json("server lấy dữ liệu thành công");
+});
 //Connect Database
 mongoose.connect(process.env.MONGODB_URL, () => {
   console.log("Connected to MongoDB successful");
