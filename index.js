@@ -37,6 +37,6 @@ app.use("/Chapter", chapterRoute);
 app.use("/BinhLuan", binhluanRoute);
 
 //kiểm tra port hoạt động ở 8000
-app.listen(8000, () => {
-  console.log("Server is running");
+app.listen(process.env.PORT || 8000, () => {
+  console.log("Server is running at 8000");
 });
