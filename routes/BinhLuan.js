@@ -1,5 +1,4 @@
 const BinhLuanController = require("../controller/BinhLuanController");
-
 const router = require("express").Router();
 
 //Thêm bình luận

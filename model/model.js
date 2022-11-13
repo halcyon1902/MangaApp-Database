@@ -1,3 +1,4 @@
+const moment = require("moment/moment");
 const mongoose = require("mongoose");
 //tạo schema Tác giả
 const TacGiaSchema = new mongoose.Schema({
@@ -74,6 +75,9 @@ const TaiKhoanSchema = new mongoose.Schema({
   TaiKhoan: {
     type: String,
     required: true,
+    minlength: 6,
+    maxlength: 20,
+    unique: true,
   },
   MatKhau: {
     type: String,
@@ -81,10 +85,12 @@ const TaiKhoanSchema = new mongoose.Schema({
   },
   Email: {
     type: String,
+    unique: true,
     required: true,
   },
   NgayTao: {
     type: String,
+    default: moment().format("MM/DD/YYYY"),
     required: true,
   },
   PhanQuyen: {
@@ -94,6 +100,7 @@ const TaiKhoanSchema = new mongoose.Schema({
   },
   TrangThai: {
     type: Boolean,
+    default: true,
     required: true,
   },
   BinhLuans: {
@@ -108,7 +115,7 @@ const ChapterSchema = new mongoose.Schema({
   },
   NgayNhap: {
     type: Date,
-    default: Date.now,
+    default: moment().format("MM/DD/YYYY"),
     required: true,
   },
   TrangThai: {
@@ -142,7 +149,7 @@ const BinhLuanSchema = new mongoose.Schema({
   },
   NgayNhap: {
     type: Date,
-    default: Date.now,
+    default: moment().format("MM/DD/YYYY"),
     required: true,
   },
   //thêm vào chapter

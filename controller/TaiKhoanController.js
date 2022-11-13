@@ -1,9 +1,18 @@
 const { Truyen, TacGia, TaiKhoan } = require("../model/model");
+const bcrypt = require("bcrypt");
 const TaiKhoanController = {
   //Thêm tài khoản
   AddTaiKhoan: async (req, res) => {
     try {
-      const taikhoan = new TaiKhoan(req.body);
+      const salt = await bcrypt.genSalt(10);
+      const hashed = await bcrypt.hash(req.body.MatKhau, salt);
+      //tạo tài khoản mới
+      const taikhoan = new TaiKhoan({
+        TaiKhoan: req.body.TaiKhoan,
+        MatKhau: hashed,
+        Email: req.body.Email,
+      });
+      //lưu vào database
       const saveTaiKhoan = await taikhoan.save();
       res.status(200).json(saveTaiKhoan);
     } catch (err) {
@@ -37,6 +46,24 @@ const TaiKhoanController = {
       res.status(500).json(err);
     }
   },
+  loginUser: async (req, res) => {
+    try {
+      const user = await TaiKhoan.findOne({ TaiKhoan: req.body.TaiKhoan });
+      if (!user) {
+        res.status(404).json("Sai tên tài khoản");
+      }
+      const validPassword = await bcrypt.compare(req.body.MatKhau, user.MatKhau);
+      if (!validPassword) {
+        res.status(404).json("Sai mật khẩu");
+      }
+      if (user && validPassword) {
+        res.status(200).json(user);
+      }
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
 };
+
 // xuất controller
 module.exports = TaiKhoanController;

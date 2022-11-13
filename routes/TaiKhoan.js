@@ -8,5 +8,7 @@ router.get("/", TaiKhoanController.GetAllTaiKhoan);
 router.get("/:id", TaiKhoanController.Get1TaiKhoan);
 //Cập nhật thông tin tài khoản
 router.put("/:id", TaiKhoanController.Update1TaiKhoan);
+//đăng nhập
+router.post("/login", TaiKhoanController.loginUser);
 //xuất router
 module.exports = router;
