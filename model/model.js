@@ -90,7 +90,7 @@ const TaiKhoanSchema = new mongoose.Schema({
   },
   NgayTao: {
     type: String,
-    default: moment().format("MM/DD/YYYY"),
+    default: moment().format("DD/MM/YYYY"),
     required: true,
   },
   PhanQuyen: {
@@ -115,7 +115,7 @@ const ChapterSchema = new mongoose.Schema({
   },
   NgayNhap: {
     type: Date,
-    default: moment().format("MM/DD/YYYY"),
+    default: moment().format("DD/MM/YYYY"),
     required: true,
   },
   TrangThai: {
@@ -149,7 +149,7 @@ const BinhLuanSchema = new mongoose.Schema({
   },
   NgayNhap: {
     type: Date,
-    default: moment().format("MM/DD/YYYY"),
+    default: moment().format("DD/MM/YYYY"),
     required: true,
   },
   //thêm vào chapter
