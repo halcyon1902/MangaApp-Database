@@ -1,5 +1,5 @@
 const { Truyen, TacGia, TheLoai, Chapter, TaiKhoan } = require("../model/model");
-const TruyenController = {
+const truyenController = {
   //Thêm truyện
   AddTruyen: async (req, res) => {
     try {
@@ -169,4 +169,4 @@ const TruyenController = {
   },
 };
 //xuất router
-module.exports = TruyenController;
+module.exports = truyenController;

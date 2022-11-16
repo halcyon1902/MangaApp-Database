@@ -1,5 +1,5 @@
 const { Truyen, TacGia } = require("../model/model");
-const TacGiaController = {
+const tacgiaController = {
   //Thêm tác giả
   AddTacGia: async (req, res) => {
     try {
@@ -40,4 +40,4 @@ const TacGiaController = {
   },
 };
 // xuất controller
-module.exports = TacGiaController;
+module.exports = tacgiaController;

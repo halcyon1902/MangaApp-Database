@@ -1,18 +1,18 @@
-const TruyenController = require("../controller/TruyenController");
+const truyenController = require("../controller/truyenController");
 const router = require("express").Router();
 //Thêm truyện
-router.post("/", TruyenController.AddTruyen);
+router.post("/", truyenController.AddTruyen);
 //Lấy toàn bộ thông tin truyện
-router.get("/", TruyenController.GetAllTruyen);
+router.get("/", truyenController.GetAllTruyen);
 //Lấy thông tin 1 truyện
-router.get("/:id", TruyenController.Get1Truyen);
+router.get("/:id", truyenController.Get1Truyen);
 //Cập nhật thông tin truyện
-router.put("/:id", TruyenController.Update1Truyen);
+router.put("/:id", truyenController.Update1Truyen);
 //Tìm kiếm theo thể loại và tên
-router.get("/SearchTruyen/:key", TruyenController.SearchTruyen);
+router.get("/SearchTruyen/:key", truyenController.SearchTruyen);
 //Tìm kiếm theo tên tác giả
-router.get("/SearchTruyenTheoTacGia/:key", TruyenController.SearchTruyenTheoTacGia);
+router.get("/SearchTruyenTheoTacGia/:key", truyenController.SearchTruyenTheoTacGia);
 //Tìm Kiếm truyện theo thể loại
-router.get("/SearchTruyenTheoTheLoai/:key", TruyenController.SearchTruyenTheoTheLoai);
+router.get("/SearchTruyenTheoTheLoai/:key", truyenController.SearchTruyenTheoTheLoai);
 //xuất router
 module.exports = router;

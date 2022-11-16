@@ -45,6 +45,4 @@ app.use("/BinhLuan", binhluanRoute);
 app.listen(process.env.PORT || 8000, () => {
   console.log("Server is running at 8000");
 });
-
-//Xác thực
-//Phân quyền
+//Json web token : xác thực người dùng

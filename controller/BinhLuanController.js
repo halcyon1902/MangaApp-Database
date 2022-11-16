@@ -1,5 +1,5 @@
 const { Chapter, BinhLuan, TaiKhoan } = require("../model/model");
-const BinhLuanController = {
+const binhluanController = {
   //Thêm Bình luận
   AddBL: async (req, res) => {
     try {
@@ -31,4 +31,4 @@ const BinhLuanController = {
 };
 
 //xuất router
-module.exports = BinhLuanController;
+module.exports = binhluanController;

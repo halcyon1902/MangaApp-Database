@@ -1,5 +1,5 @@
 const { Truyen, Chapter } = require("../model/model");
-const ChapterController = {
+const chapterController = {
   //Thêm Chapter
   AddChapter: async (req, res) => {
     try {
@@ -17,11 +17,11 @@ const ChapterController = {
   Get1Chapter: async (req, res) => {
     try {
       const chapter = await Chapter.findById(req.params.id)
-      .populate("BinhLuans")
-      .populate({
-        path: "BinhLuans",
-        populate: {path: "TaiKhoan"}
-      });
+        .populate("BinhLuans")
+        .populate({
+          path: "BinhLuans",
+          populate: { path: "TaiKhoan" },
+        });
       res.status(200).json(chapter);
     } catch (err) {
       res.status(500).json(err);
@@ -39,4 +39,4 @@ const ChapterController = {
   },
 };
 //xuất router
-module.exports = ChapterController;
+module.exports = chapterController;

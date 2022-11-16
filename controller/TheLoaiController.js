@@ -1,5 +1,5 @@
 const { TheLoai } = require("../model/model");
-const TheLoaiController = {
+const theloaiController = {
   //Thêm thể loại
   AddTheLoai: async (req, res) => {
     try {
@@ -40,4 +40,4 @@ const TheLoaiController = {
   },
 };
 // xuất controller
-module.exports = TheLoaiController;
+module.exports = theloaiController;

@@ -1,9 +1,9 @@
-const BinhLuanController = require("../controller/BinhLuanController");
+const binhluanController = require("../controller/binhluanController");
 const router = require("express").Router();
 
 //Thêm bình luận
-router.post("/", BinhLuanController.AddBL);
+router.post("/", binhluanController.AddBL);
 //Chỉnh sửa bình luận
-router.put("/:id", BinhLuanController.Update1BL);
+router.put("/:id", binhluanController.Update1BL);
 //xuất router
 module.exports = router;
