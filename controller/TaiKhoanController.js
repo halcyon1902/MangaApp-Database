@@ -143,7 +143,7 @@ const taikhoanController = {
   logoutUser: async (req, res) => {
     res.clearCookie("refreshToken");
     refreshTokens = refreshTokens.filter((token) => token !== req.cookies.refreshToken);
-    res.status(200).json("Đăng xuất thành công");
+    return res.status(200).json("Đăng xuất thành công");
   },
 };
 
