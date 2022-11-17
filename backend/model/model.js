@@ -125,6 +125,10 @@ const ChapterSchema = new mongoose.Schema({
   Truyen: {
     type: String,
   },
+  LuotXem:{
+    type: Number,
+    default: 0,
+  },
   LinkAnhs: {
     type: [String],
     required: true,
