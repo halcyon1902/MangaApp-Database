@@ -75,7 +75,7 @@ const taikhoanController = {
         refreshTokens.push(refreshToken);
         res.cookie("refreshToken", refreshToken, {
           httpOnly: true,
-          secure: false,
+          secure: true,
           path: "/",
           sameSite: "strict",
         });

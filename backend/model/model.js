@@ -8,6 +8,7 @@ const TacGiaSchema = new mongoose.Schema({
   },
   TrangThai: {
     type: Boolean,
+    default: true,
     required: true,
   },
 });
@@ -125,7 +126,7 @@ const ChapterSchema = new mongoose.Schema({
   Truyen: {
     type: String,
   },
-  LuotXem:{
+  LuotXem: {
     type: Number,
     default: 0,
   },

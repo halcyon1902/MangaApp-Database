@@ -1,28 +1,9 @@
-import { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { getAllUsers } from "../../redux/apiRequest";
-import { createAxios } from "../../createInstance";
-import "./home.css";
-import { loginSuccess } from "../../redux/authSlice";
-
-const HomePage = () => {
-  const user = useSelector((state) => state.auth.login?.currentUser);
+import "./user.css";
+function User() {
   const userList = useSelector((state) => state.users.users?.allUsers);
-  const msg = useSelector((state) => state.users?.msg);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  let axiosJWT = createAxios(user, dispatch, loginSuccess);
-
-  useEffect(() => {
-    if (!user) {
-      navigate("/login");
-    }
-    if (user?.accessToken) {
-      getAllUsers(user?.accessToken, dispatch, axiosJWT);
-    }
-  }, []);
-
   return (
     <div>
       <div className="home-title">Danh sách tài khoản</div>
@@ -53,5 +34,6 @@ const HomePage = () => {
       </table>
     </div>
   );
-};
-export default HomePage;
+}
+
+export default User;

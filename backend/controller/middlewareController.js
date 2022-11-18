@@ -13,7 +13,7 @@ const middlewareController = {
         next();
       });
     } else {
-      res.status(401).json("Bạn chưa được xác thực");
+      return res.status(401).json("Bạn chưa được xác thực");
     }
   },
   verifyTokenAndAdminAuth: (req, res, next) => {
@@ -21,7 +21,7 @@ const middlewareController = {
       if (req.TaiKhoan.id == req.param.id || req.TaiKhoan.PhanQuyen) {
         next();
       } else {
-        res.status(403).json("Bạn không có quyền");
+        return res.status(403).json("Bạn không có quyền");
       }
     });
   },

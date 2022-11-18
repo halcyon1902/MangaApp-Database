@@ -3,11 +3,15 @@ const tacgiaController = {
   //Thêm tác giả
   AddTacGia: async (req, res) => {
     try {
+      const duplicate = await TacGia.findOne({ TenTacGia: req.body.TenTacGia });
+      if (duplicate) {
+        return res.json("Tác giả đã tổn tại");
+      }
       const tacgiamoi = new TacGia(req.body);
       const saveTacGia = await tacgiamoi.save();
-      res.status(200).json(saveTacGia);
+      return res.status(200).json(saveTacGia);
     } catch (err) {
-      res.status(500).json(err); // search google: http request code nếu muốn biết code nghĩa là gì
+      return res.status(500).json(err); // search google: http request code nếu muốn biết code nghĩa là gì
     }
   },
   //Lấy toàn bộ tác giả
