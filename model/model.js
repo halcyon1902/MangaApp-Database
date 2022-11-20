@@ -9,6 +9,7 @@ const TacGiaSchema = new mongoose.Schema({
   },
   TrangThai: {
     type: Boolean,
+    default: true,
     required: true,
   },
 });
@@ -21,6 +22,7 @@ const TheLoaiSchema = new mongoose.Schema({
   },
   TrangThai: {
     type: Boolean,
+    default: true,
     required: true,
   },
 });
@@ -36,10 +38,12 @@ const TruyenSchema = new mongoose.Schema({
   },
   TrangThai: {
     type: Boolean,
+    default: true,
     required: true,
   },
   TinhTrang: {
     type: Boolean,
+    default: false,
     required: true,
   },
   GioiThieu: {
@@ -122,6 +126,7 @@ const ChapterSchema = new mongoose.Schema({
   },
   TrangThai: {
     type: Boolean,
+    default: true,
     required: true,
   },
   Truyen: {
@@ -151,6 +156,7 @@ const BinhLuanSchema = new mongoose.Schema({
   },
   TrangThai: {
     type: Boolean,
+    default: true,
     required: true,
   },
   NgayNhap: {
