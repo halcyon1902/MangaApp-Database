@@ -160,7 +160,7 @@ const BinhLuanSchema = new mongoose.Schema({
     required: true,
   },
   NgayNhap: {
-    type: Date,
+    type: String,
     default: moment().format("DD/MM/YYYY"),
     required: true,
   },

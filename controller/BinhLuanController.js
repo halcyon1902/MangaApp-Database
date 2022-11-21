@@ -28,6 +28,15 @@ const BinhLuanController = {
       res.status(500).json(err);
     }
   },
+  //lấy toàn bộ bình luận
+  GetAllBL: async (req, res) => {
+    try {
+      const bl = await BinhLuan.find();
+      res.status(200).json(bl);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
 };
 
 //xuất router

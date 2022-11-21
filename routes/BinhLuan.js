@@ -5,5 +5,7 @@ const router = require("express").Router();
 router.post("/", BinhLuanController.AddBL);
 //Chỉnh sửa bình luận
 router.put("/:id", BinhLuanController.Update1BL);
+//
+router.get("/", BinhLuanController.GetAllBL);
 //xuất router
 module.exports = router;
