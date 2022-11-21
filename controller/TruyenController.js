@@ -29,6 +29,48 @@ const TruyenController = {
       res.status(500).json(err);
     }
   },
+  // lay 6 truyen co luot xem cao nhat
+  GetTruyenTheoLuotXem: async (req, res) => {
+    try {
+      const listTruyenHot = await Truyen.find()
+      .populate("Chapters")
+      .populate({
+        path: "Chapters",
+        populate: {path: "BinhLuans"
+      }})
+      .populate({
+        path: "Chapters",
+        populate: {
+          path: "BinhLuans",
+          populate:{path: "TaiKhoan"}
+      }})
+      .sort({LuotXem:-1}).limit(6);
+      res.status(200).json(listTruyenHot);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+  // lay 6 truyen moi nhat
+  GetTruyenMoi: async (req, res) => {
+    try {
+      const listTruyenMoi = await Truyen.find()
+      .populate("Chapters")
+      .populate({
+        path: "Chapters",
+        populate: {path: "BinhLuans"
+      }})
+      .populate({
+        path: "Chapters",
+        populate: {
+          path: "BinhLuans",
+          populate:{path: "TaiKhoan"}
+      }})
+      .sort({NgayCapNhat:-1}).limit(6);
+      res.status(200).json(listTruyenMoi);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
   //lấy thông tin 1 truyện
   Get1Truyen: async (req, res) => {
     try {

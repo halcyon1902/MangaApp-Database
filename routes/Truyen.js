@@ -4,6 +4,10 @@ const router = require("express").Router();
 router.post("/", TruyenController.AddTruyen);
 //Lấy toàn bộ thông tin truyện
 router.get("/", TruyenController.GetAllTruyen);
+//Lấy 6 truyện có lượt xem cao nhất
+router.get("/TruyenTheoLuotXem", TruyenController.GetTruyenTheoLuotXem);
+//Lấy 6 truyện moi nhat
+router.get("/TruyenMoi", TruyenController.GetTruyenMoi);
 //Lấy thông tin 1 truyện
 router.get("/:id", TruyenController.Get1Truyen);
 //Cập nhật thông tin truyện

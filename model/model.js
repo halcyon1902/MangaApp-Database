@@ -1,6 +1,6 @@
 const moment = require("moment/moment");
 const mongoose = require("mongoose");
-//tạo schema Tác giả
+//=======================tạo schema Tác giả=======================
 const TacGiaSchema = new mongoose.Schema({
   TenTacGia: {
     type: String,
@@ -13,7 +13,7 @@ const TacGiaSchema = new mongoose.Schema({
     required: true,
   },
 });
-//tạo schema Thể loại
+//=======================tạo schema Thể loại=======================
 const TheLoaiSchema = new mongoose.Schema({
   TenTheLoai: {
     type: String,
@@ -26,7 +26,7 @@ const TheLoaiSchema = new mongoose.Schema({
     required: true,
   },
 });
-//tạo schema Truyện
+//=======================tạo schema Truyện=======================
 const TruyenSchema = new mongoose.Schema({
   TenTruyen: {
     type: String,
@@ -62,6 +62,14 @@ const TruyenSchema = new mongoose.Schema({
   LuotTheoDoi: {
     type: Number,
   },
+  NgayTao: {
+    type: Date,
+    default: new Date(),
+  },
+  NgayCapNhat: {
+    type: Date,
+    default: new Date(),
+  },
   TacGias: [
     {
       type: String,
@@ -76,7 +84,7 @@ const TruyenSchema = new mongoose.Schema({
     },
   ],
 });
-//tạo schema Tài khoản
+//=======================tạo schema Tài khoản=======================
 const TaiKhoanSchema = new mongoose.Schema({
   TaiKhoan: {
     type: String,
@@ -94,9 +102,12 @@ const TaiKhoanSchema = new mongoose.Schema({
     unique: true,
     required: true,
   },
+  HoTen: {
+    type: String,
+  },
   NgayTao: {
     type: String,
-    default: moment().format("DD/MM/YYYY"),
+    default: new Date(),
     required: true,
   },
   PhanQuyen: {
@@ -113,7 +124,7 @@ const TaiKhoanSchema = new mongoose.Schema({
     type: [String],
   },
 });
-//tạo schema Chapter
+//=======================tạo schema Chapter=======================
 const ChapterSchema = new mongoose.Schema({
   TenChapter: {
     type: String,
@@ -121,7 +132,7 @@ const ChapterSchema = new mongoose.Schema({
   },
   NgayNhap: {
     type: Date,
-    default: moment().format("DD/MM/YYYY"),
+    default: new Date(),
     required: true,
   },
   TrangThai: {
@@ -148,7 +159,7 @@ const ChapterSchema = new mongoose.Schema({
     },
   ],
 });
-//tạo schema Bình luận
+//=======================tạo schema Bình luận=======================
 const BinhLuanSchema = new mongoose.Schema({
   NoiDungBL: {
     type: String,
@@ -161,7 +172,7 @@ const BinhLuanSchema = new mongoose.Schema({
   },
   NgayNhap: {
     type: Date,
-    default: moment().format("DD/MM/YYYY"),
+    default: new Date(),
     required: true,
   },
   //thêm vào chapter
@@ -175,7 +186,7 @@ const BinhLuanSchema = new mongoose.Schema({
   },
 });
 
-//tạo model
+//=======================tạo model=======================
 let TacGia = mongoose.model("TacGia", TacGiaSchema);
 let Truyen = mongoose.model("Truyen", TruyenSchema);
 let TaiKhoan = mongoose.model("TaiKhoan", TaiKhoanSchema);
