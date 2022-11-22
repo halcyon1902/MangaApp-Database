@@ -1,4 +1,10 @@
-const { Truyen, TacGia, TheLoai, Chapter, TaiKhoan } = require("../model/model");
+const {
+  Truyen,
+  TacGia,
+  TheLoai,
+  Chapter,
+  TaiKhoan,
+} = require("../model/model");
 const TruyenController = {
   //Thêm truyện
   AddTruyen: async (req, res) => {
@@ -13,17 +19,19 @@ const TruyenController = {
   //lấy toàn bộ truyện
   GetAllTruyen: async (req, res) => {
     try {
-      const allTruyen = await Truyen.find().populate("Chapters")
-      .populate({
-        path: "Chapters",
-        populate: {path: "BinhLuans"
-      }})
-      .populate({
-        path: "Chapters",
-        populate: {
-          path: "BinhLuans",
-          populate:{path: "TaiKhoan"}
-      }});
+      const allTruyen = await Truyen.find()
+        .populate("Chapters")
+        .populate({
+          path: "Chapters",
+          populate: { path: "BinhLuans" },
+        })
+        .populate({
+          path: "Chapters",
+          populate: {
+            path: "BinhLuans",
+            populate: { path: "TaiKhoan" },
+          },
+        });
       res.status(200).json(allTruyen);
     } catch (err) {
       res.status(500).json(err);
@@ -33,18 +41,20 @@ const TruyenController = {
   GetTruyenTheoLuotXem: async (req, res) => {
     try {
       const listTruyenHot = await Truyen.find()
-      .populate("Chapters")
-      .populate({
-        path: "Chapters",
-        populate: {path: "BinhLuans"
-      }})
-      .populate({
-        path: "Chapters",
-        populate: {
-          path: "BinhLuans",
-          populate:{path: "TaiKhoan"}
-      }})
-      .sort({LuotXem:-1}).limit(6);
+        .populate("Chapters")
+        .populate({
+          path: "Chapters",
+          populate: { path: "BinhLuans" },
+        })
+        .populate({
+          path: "Chapters",
+          populate: {
+            path: "BinhLuans",
+            populate: { path: "TaiKhoan" },
+          },
+        })
+        .sort({ LuotXem: -1 })
+        .limit(6);
       res.status(200).json(listTruyenHot);
     } catch (err) {
       res.status(500).json(err);
@@ -54,18 +64,20 @@ const TruyenController = {
   GetTruyenMoi: async (req, res) => {
     try {
       const listTruyenMoi = await Truyen.find()
-      .populate("Chapters")
-      .populate({
-        path: "Chapters",
-        populate: {path: "BinhLuans"
-      }})
-      .populate({
-        path: "Chapters",
-        populate: {
-          path: "BinhLuans",
-          populate:{path: "TaiKhoan"}
-      }})
-      .sort({NgayCapNhat:-1}).limit(6);
+        .populate("Chapters")
+        .populate({
+          path: "Chapters",
+          populate: { path: "BinhLuans" },
+        })
+        .populate({
+          path: "Chapters",
+          populate: {
+            path: "BinhLuans",
+            populate: { path: "TaiKhoan" },
+          },
+        })
+        .sort({ NgayCapNhat: -1 })
+        .limit(6);
       res.status(200).json(listTruyenMoi);
     } catch (err) {
       res.status(500).json(err);
@@ -78,14 +90,15 @@ const TruyenController = {
         .populate("Chapters")
         .populate({
           path: "Chapters",
-          populate: {path: "BinhLuans"
-        }})
+          populate: { path: "BinhLuans" },
+        })
         .populate({
           path: "Chapters",
           populate: {
             path: "BinhLuans",
-            populate:{path: "TaiKhoan"}
-        }})
+            populate: { path: "TaiKhoan" },
+          },
+        });
       res.status(200).json(truyen);
     } catch (err) {
       res.status(500).json(err);
@@ -110,17 +123,19 @@ const TruyenController = {
 
       // neu params la ten tac gia
       if (tacgia != null) {
-        let data = await Truyen.find({ TacGias: tacgia.id }).populate("Chapters")
-      .populate({
-        path: "Chapters",
-        populate: {path: "BinhLuans"
-      }})
-      .populate({
-        path: "Chapters",
-        populate: {
-          path: "BinhLuans",
-          populate:{path: "TaiKhoan"}
-      }});
+        let data = await Truyen.find({ TacGias: tacgia.id })
+          .populate("Chapters")
+          .populate({
+            path: "Chapters",
+            populate: { path: "BinhLuans" },
+          })
+          .populate({
+            path: "Chapters",
+            populate: {
+              path: "BinhLuans",
+              populate: { path: "TaiKhoan" },
+            },
+          });
         if (data.length == 0) {
           res.status(200).json("tác giả không có truyện");
         } else {
@@ -132,24 +147,25 @@ const TruyenController = {
           $or: [
             { TenTruyen: { $regex: req.params.key, $options: "i" } }, // $option: 'i' => để k phân biệt chữ hoa - thường
           ],
-        }).populate("Chapters")
-        .populate({
-          path: "Chapters",
-          populate: {path: "BinhLuans"
-        }})
-        .populate({
-          path: "Chapters",
-          populate: {
-            path: "BinhLuans",
-            populate:{path: "TaiKhoan"}
-        }});
+        })
+          .populate("Chapters")
+          .populate({
+            path: "Chapters",
+            populate: { path: "BinhLuans" },
+          })
+          .populate({
+            path: "Chapters",
+            populate: {
+              path: "BinhLuans",
+              populate: { path: "TaiKhoan" },
+            },
+          });
         if (data != null) {
           res.status(200).json(data);
         } else {
           res.status(200).json("Không Tìm Thấy Kết Quả!");
         }
       }
-      
     } catch (err) {
       res.status(500).json(err);
     }
@@ -159,17 +175,19 @@ const TruyenController = {
     try {
       const tacgia = await TacGia.findOne({ TenTacGia: req.params.key });
       if (tacgia != null) {
-        let data = await Truyen.find({ TacGias: tacgia.id }).populate("Chapters")
-      .populate({
-        path: "Chapters",
-        populate: {path: "BinhLuans"
-      }})
-      .populate({
-        path: "Chapters",
-        populate: {
-          path: "BinhLuans",
-          populate:{path: "TaiKhoan"}
-      }});
+        let data = await Truyen.find({ TacGias: tacgia.id })
+          .populate("Chapters")
+          .populate({
+            path: "Chapters",
+            populate: { path: "BinhLuans" },
+          })
+          .populate({
+            path: "Chapters",
+            populate: {
+              path: "BinhLuans",
+              populate: { path: "TaiKhoan" },
+            },
+          });
         if (data.length == 0) {
           res.status(200).json("tác giả không có truyện");
         } else {
@@ -189,17 +207,19 @@ const TruyenController = {
       if (theloai != null) {
         let data = await Truyen.find({
           TheLoais: theloai.id,
-        }).populate("Chapters")
-        .populate({
-          path: "Chapters",
-          populate: {path: "BinhLuans"
-        }})
-        .populate({
-          path: "Chapters",
-          populate: {
-            path: "BinhLuans",
-            populate:{path: "TaiKhoan"}
-        }});
+        })
+          .populate("Chapters")
+          .populate({
+            path: "Chapters",
+            populate: { path: "BinhLuans" },
+          })
+          .populate({
+            path: "Chapters",
+            populate: {
+              path: "BinhLuans",
+              populate: { path: "TaiKhoan" },
+            },
+          });
         if (data.length == 0) res.status(200).json("Thể lọai không có truyện");
         else res.status(200).json(data);
       } else {
