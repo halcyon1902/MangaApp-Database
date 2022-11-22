@@ -11,6 +11,7 @@ const TaiKhoanController = {
         TaiKhoan: req.body.TaiKhoan,
         MatKhau: hashed,
         Email: req.body.Email,
+        HoTen: req.body.HoTen,
       });
       //lưu vào database
       const saveTaiKhoan = await taikhoan.save();

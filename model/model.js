@@ -104,6 +104,7 @@ const TaiKhoanSchema = new mongoose.Schema({
   },
   HoTen: {
     type: String,
+    require: true,
   },
   NgayTao: {
     type: String,
