@@ -64,11 +64,11 @@ const TruyenSchema = new mongoose.Schema({
   },
   NgayTao: {
     type: Date,
-    default: new Date(),
+    default: new Date().toISOString(),
   },
   NgayCapNhat: {
     type: Date,
-    default: new Date(),
+    default: new Date().toISOString(),
   },
   TacGias: [
     {
@@ -107,8 +107,8 @@ const TaiKhoanSchema = new mongoose.Schema({
   },
   NgayTao: {
     type: String,
-    default: new Date(),
     required: true,
+    default: new Date().toISOString(),
   },
   PhanQuyen: {
     type: Boolean,
@@ -132,7 +132,7 @@ const ChapterSchema = new mongoose.Schema({
   },
   NgayNhap: {
     type: Date,
-    default: new Date(),
+    default: new Date().toISOString(),
     required: true,
   },
   TrangThai: {
@@ -172,7 +172,7 @@ const BinhLuanSchema = new mongoose.Schema({
   },
   NgayNhap: {
     type: Date,
-    default: new Date(),
+    default: new Date().toISOString(),
     required: true,
   },
   //thêm vào chapter
