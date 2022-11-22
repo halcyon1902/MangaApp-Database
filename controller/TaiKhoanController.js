@@ -53,7 +53,10 @@ const TaiKhoanController = {
       if (!user) {
         res.status(404).json("Sai tên tài khoản");
       }
-      const validPassword = await bcrypt.compare(req.body.MatKhau, user.MatKhau);
+      const validPassword = await bcrypt.compare(
+        req.body.MatKhau,
+        user.MatKhau
+      );
       if (!validPassword) {
         res.status(404).json("Sai mật khẩu");
       }
@@ -63,6 +66,10 @@ const TaiKhoanController = {
     } catch (err) {
       res.status(500).json(err);
     }
+  },
+
+  home(req, res) {
+    res.render("home");
   },
 };
 
