@@ -11,7 +11,7 @@ const BinhLuanController = {
       }
       if (req.body.TaiKhoan) {
         const binhluan = TaiKhoan.findById(req.body.TaiKhoan);
-        await binhluan.updateMany({ $push: { BinhLuans: saveBinhLuan._id } }); // thêm id bình luận vào chapter
+        await binhluan.updateMany({ $push: { BinhLuans: saveBinhLuan._id } }); // thêm id bình luận vào tài khoản
       }
       res.status(200).json(saveBinhLuan);
     } catch (err) {

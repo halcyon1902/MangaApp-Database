@@ -127,7 +127,7 @@ const TaiKhoanSchema = new mongoose.Schema({
   LichSu: {
     type: [String],
   },
-  YeuThic: {
+  YeuThich: {
     type: [String],
   },
 });
