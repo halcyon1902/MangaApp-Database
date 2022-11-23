@@ -7,6 +7,8 @@ router.post("/", TaiKhoanController.AddTaiKhoan);
 router.get("/:id", TaiKhoanController.Get1TaiKhoan);
 //Cập nhật thông tin tài khoản
 router.put("/:id", TaiKhoanController.Update1TaiKhoan);
+//Cập nhật thông tin mật khẩu
+router.put("/UpdateMatKhau/:id", TaiKhoanController.UpdateMatKhau);
 //đăng nhập
 router.post("/login", TaiKhoanController.loginUser);
 //Lấy toàn bộ thông tin tài khoản

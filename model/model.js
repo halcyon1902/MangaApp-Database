@@ -124,6 +124,12 @@ const TaiKhoanSchema = new mongoose.Schema({
   BinhLuans: {
     type: [String],
   },
+  LichSu: {
+    type: [String],
+  },
+  YeuThic: {
+    type: [String],
+  },
 });
 //=======================tạo schema Chapter=======================
 const ChapterSchema = new mongoose.Schema({

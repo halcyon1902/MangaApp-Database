@@ -71,6 +71,18 @@ const TaiKhoanController = {
   home(req, res) {
     res.render("home");
   },
+  //Cập nhật thông tin mật khẩu
+  UpdateMatKhau: async (req, res) => {
+    try {
+      const salt = await bcrypt.genSalt(10);
+      const hashed = await bcrypt.hash(req.body.MatKhau, salt);
+      const taikhoan = await TaiKhoan.findById(req.params.id);
+      await taikhoan.updateOne({ $set: { MatKhau: hashed } });
+      res.status(200).json("Updated successful");
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
 };
 
 // xuất controller
