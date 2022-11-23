@@ -1,0 +1,23 @@
+<div class="mt-4">
+  <h3>Thêm Thể Loại</h3>
+
+  <form method="POST" action="/theloai/store">
+    <div class="form-group">
+      <label for="TenTheLoai">Tên Thể Loại</label>
+      <input
+        type="Text"
+        name="TenTheLoai"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Nhập tên tác giả..."
+      />
+    </div>
+
+    <input type="radio" name="TrangThai" value="true" />
+    <label for="TrangThai">TRUE</label><br />
+    <input type="radio" name="TrangThai" value="false" />
+    <label for="TrangThai"> FALSE</label><br />
+    <button type="submit" class="btn btn-primary">Thêm Thể Loại</button>
+  </form>
+</div>

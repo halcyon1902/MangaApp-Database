@@ -4,8 +4,8 @@ const mongoose = require("mongoose");
 const TacGiaSchema = new mongoose.Schema({
   TenTacGia: {
     type: String,
-    unique: true,
     required: true,
+    unique: true,
   },
   TrangThai: {
     type: Boolean,
@@ -17,8 +17,8 @@ const TacGiaSchema = new mongoose.Schema({
 const TheLoaiSchema = new mongoose.Schema({
   TenTheLoai: {
     type: String,
-    unique: true,
     required: true,
+    unique: true,
   },
   TrangThai: {
     type: Boolean,

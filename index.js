@@ -11,14 +11,18 @@ const session = require("express-session");
 const flash = require("connect-flash");
 var bodyParser = require("body-parser");
 const morgan = require("morgan");
+
 const tacgiaRoute = require("./routes/TacGia");
 const truyenRoute = require("./routes/Truyen");
 const taikhoanRoute = require("./routes/TaiKhoan");
 const chapterRoute = require("./routes/Chapter");
 const binhluanRoute = require("./routes/BinhLuan");
 const theloaiRoute = require("./routes/TheLoai");
+
 const siteRoutee = require("./routerAdmin/site");
 const loginRoutes = require("./routerAdmin/login");
+const tacgiaAdminRoutes = require("./routerAdmin/tacgia");
+const theloaiAdminRoutes = require("./routerAdmin/theloai");
 
 const route = require("./routerAdmin");
 
@@ -31,6 +35,11 @@ app.use(bodyParser.json({ limit: "50mb" }));
 app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 app.use(
   session({
     secret: "secret",
@@ -53,19 +62,19 @@ app.engine(
   })
 );
 app.set("view engine", "hbs");
-app.set("views", path.join(__dirname, "resources/views"));
+app.set("views", path.join(__dirname, "resources", "views"));
 
-// route admin init
-route(app);
 //test khi server host web thành công
-app.get("/", (req, res) => {
-  res.status(200).json("mo server thanh cong");
-});
+// app.get("/", (req, res) => {
+//   res.status(200).json("mo server thanh cong");
+// });
 //Connect Database
 mongoose.connect(process.env.MONGODB_URL, () => {
   console.log("Connected to MongoDB successful");
 });
 
+// route admin init
+route(app);
 //Routes
 app.use("/TacGia", tacgiaRoute);
 app.use("/TheLoai", theloaiRoute);
@@ -76,6 +85,8 @@ app.use("/BinhLuan", binhluanRoute);
 
 app.use("/home", siteRoutee);
 app.use("/loginadmin", loginRoutes);
+app.use("/tacgia", tacgiaAdminRoutes);
+app.use("/theloai", theloaiAdminRoutes);
 
 //kiểm tra port hoạt động ở 8000
 app.listen(process.env.PORT || 8000, () => {

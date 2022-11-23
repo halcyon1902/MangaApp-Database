@@ -18,11 +18,7 @@ class LoginController {
       res.redirect();
     }
     if (user && validPassword) {
-      Truyen.find({}).then((truyens) => {
-        res.render("home", {
-          truyens: mutipleMongooseToObject(truyens),
-        });
-      });
+      res.redirect("/");
     }
   };
 
