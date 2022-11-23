@@ -7,6 +7,8 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
+const session = require("express-session");
+const flash = require("connect-flash");
 var bodyParser = require("body-parser");
 const morgan = require("morgan");
 const tacgiaRoute = require("./routes/TacGia");
@@ -29,6 +31,15 @@ app.use(bodyParser.json({ limit: "50mb" }));
 app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
+app.use(
+  session({
+    secret: "secret",
+    cookie: { maxAge: 60000 },
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+app.use(flash());
 // khi send request sẽ thông báo dưới terminal
 app.use(morgan("common"));
 
@@ -45,7 +56,7 @@ app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "resources/views"));
 
 // route admin init
-// route(app);
+route(app);
 //test khi server host web thành công
 app.get("/", (req, res) => {
   res.status(200).json("mo server thanh cong");
