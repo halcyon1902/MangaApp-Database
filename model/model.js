@@ -55,9 +55,11 @@ const TruyenSchema = new mongoose.Schema({
   },
   LuotThich: {
     type: Number,
+    default: 0,
   },
   LuotXem: {
     type: Number,
+    default: 0,
   },
   LuotTheoDoi: {
     type: Number,

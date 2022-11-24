@@ -26,6 +26,28 @@ class AdminController {
       )
       .catch(next);
   }
+
+  //[Get] Admin/stored/theloai
+  storedTaiKhoan(req, res, next) {
+    TaiKhoan.find({})
+      .then((taikhoan) =>
+        res.render("admin/stored-TaiKhoan", {
+          taikhoan: mutipleMongooseToObject(taikhoan),
+        })
+      )
+      .catch(next);
+  }
+
+  //[Get] Admin/stored/truyen
+  storedTruyen(req, res, next) {
+    Truyen.find({})
+      .then((truyen) =>
+        res.render("admin/stored-Truyen", {
+          truyen: mutipleMongooseToObject(truyen),
+        })
+      )
+      .catch(next);
+  }
 }
 
 module.exports = new AdminController();

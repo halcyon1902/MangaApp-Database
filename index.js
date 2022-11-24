@@ -23,6 +23,8 @@ const siteRoutee = require("./routerAdmin/site");
 const loginRoutes = require("./routerAdmin/login");
 const tacgiaAdminRoutes = require("./routerAdmin/tacgia");
 const theloaiAdminRoutes = require("./routerAdmin/theloai");
+const taikhoanAdminRoutes = require("./routerAdmin/taikhoan");
+const adminRoutes = require("./routerAdmin/admin");
 
 const route = require("./routerAdmin");
 
@@ -86,11 +88,6 @@ app.use("/Truyen", truyenRoute);
 app.use("/TaiKhoan", taikhoanRoute);
 app.use("/Chapter", chapterRoute);
 app.use("/BinhLuan", binhluanRoute);
-
-// app.use("/home", siteRoutee);
-// app.use("/loginadmin", loginRoutes);
-// app.use("/tacgia", tacgiaAdminRoutes);
-// app.use("/theloai", theloaiAdminRoutes);
 
 //kiểm tra port hoạt động ở 8000
 app.listen(process.env.PORT || 8000, () => {

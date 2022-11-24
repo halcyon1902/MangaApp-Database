@@ -22,7 +22,7 @@ class LoginController {
         req.flash("message", "Sai tài khoản hoặc mật khẩu!!!");
         res.redirect("");
       }
-      if (user && validPassword) {
+      if (user && validPassword && user.PhanQuyen) {
         res.redirect("/");
       }
     }

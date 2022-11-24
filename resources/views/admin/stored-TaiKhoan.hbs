@@ -1,26 +1,25 @@
 <div class="mt-4">
-  <h3>Danh Sách Tác Giả</h3>
-   <a href="/tacgiaadmin/create">Thêm Tác Giả</a>
+  <h3>Danh Sách Tài Khoản</h3>
 
   <table class="table mt-4">
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Tên tác giả</th>
-        <th scope="col" colspan="2">Trạng thái</th>
+        <th scope="col">Tên đăng nhập</th>
+        <th scope="col">Họ và Tên</th>
+         <th scope="col">Trạng thái</th>
+        <th scope="col" colspan="2">Ngày tạo</th>
       </tr>
     </thead>
     <tbody>
-      {{#each tacgia}}
+      {{#each taikhoan}}
         <tr>
           <th scope="row">{{sum @index 1}}</th>
-          <td>{{this.TenTacGia}}</td>
+          <td>{{this.TaiKhoan}}</td>
+           <td>{{this.HoTen}}</td>
           <td>{{this.TrangThai}}</td>
-          <td>
-            <a
-              href="/tacgiaAdmin/{{this._id}}/edit"
-              class="btn btn-link"
-            >Sửa</a>
+          <td>{{this.NgayTao}}</td>
+          <td>  
             <a
               href=""
               class="btn btn-link"
@@ -30,6 +29,7 @@
             >Ẩn/Hiện</a>
           </td>
         </tr>
+       
       {{/each}}
     </tbody>
   </table>
@@ -40,7 +40,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Thay đổi trạng thái của tác giả</h5>
+        <h5 class="modal-title">Thay đổi trạng thái tài khoản</h5>
         <button
           type="button"
           class="close"
@@ -51,7 +51,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>Bạn chắc chắn thay đổi trạng thái của tác giả này ? </p>
+        <p>Bạn chắc chắn thay đổi trạng thái của tài khoản này ? </p>
       </div>
       <div class="modal-footer">
         <button type="button" id="btnXacNhan" class="btn btn-danger">Xác nhận</button>
@@ -73,13 +73,13 @@
 
 <script>
 
-  document.addEventListener('DOMContentLoaded', function(){ var tacgiaID;
+  document.addEventListener('DOMContentLoaded', function(){ var taikhoanID;
   var xacnhanForm = document.forms['on-off-trangthai-form'];
    var btnXanNhan =
   document.getElementById('btnXacNhan')
   $('#on-off-trangthai').on('show.bs.modal', function (event) { var button =
-  $(event.relatedTarget) ; tacgiaID = button.data('id'); });; btnXanNhan.onclick = function(){
-    xacnhanForm.action = '/tacgiaAdmin/trangthai/' + tacgiaID + '?_method=PUT';
+  $(event.relatedTarget) ; taikhoanID = button.data('id'); });; btnXanNhan.onclick = function(){
+    xacnhanForm.action = '/taikhoanAdmin/trangthai/' + taikhoanID + '?_method=PUT';
     xacnhanForm.submit() } });
 
 </script>
