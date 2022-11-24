@@ -36,6 +36,15 @@ class TacGiaAdminController {
       .then(() => res.redirect("/admin/stored/tacgia"))
       .catch(next);
   }
+
+  //[PUT] /tacgia/trangthai/:id
+  changeStatus = async (req, res, next) => {
+    const tacgia = await TacGia.findById(req.params.id);
+    tacgia
+      .updateOne({ $set: { TrangThai: !tacgia.TrangThai } })
+      .then(() => res.redirect("back"))
+      .catch(next);
+  };
 }
 
 module.exports = new TacGiaAdminController();

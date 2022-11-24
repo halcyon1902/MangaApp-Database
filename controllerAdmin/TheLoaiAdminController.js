@@ -37,6 +37,15 @@ class TheLoaiAdminController {
       .then(() => res.redirect("/admin/stored/theloai"))
       .catch(next);
   }
+
+  //[PUT] /theloaiadmin/trangthai/:id
+  changeStatus = async (req, res, next) => {
+    const theloai = await TheLoai.findById(req.params.id);
+    theloai
+      .updateOne({ $set: { TrangThai: !theloai.TrangThai } })
+      .then(() => res.redirect("back"))
+      .catch(next);
+  };
 }
 
 module.exports = new TheLoaiAdminController();

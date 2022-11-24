@@ -6,6 +6,7 @@ router.get("/create", theloaiAdminController.create);
 router.post("/store", theloaiAdminController.store);
 router.get("/:id/edit", theloaiAdminController.edit);
 router.put("/:id", theloaiAdminController.update);
+router.put("/trangthai/:id", theloaiAdminController.changeStatus);
 
 //show thong tin 1 object
 // router.use("/:id", loginController.show);
