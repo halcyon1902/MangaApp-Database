@@ -1,0 +1,36 @@
+<div class="mt-4">
+  <h3>Cập nhật tác giả</h3>
+
+  <form
+    class="mt-4"
+    method="POST"
+    action="/tacgiaAdmin/{{tacgia._id}}?_method=PUT"
+  >
+    <div class="form-group">
+      <label for="TenTacGia">Tên Tác Giả</label>
+      <input
+        type="Text"
+        name="TenTacGia"
+        value="{{tacgia.TenTacGia}}"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Nhập tên tác giả..."
+      />
+    </div>
+    <div class="form-group">
+      <input
+        type="radio"
+        id="btnTrue"
+        name="TrangThai"
+        value="true"
+        checked="true"
+      />
+
+      <label for="TrangThai">TRUE</label><br />
+      <input type="radio" id="btnfalse" name="TrangThai" value="false" />
+      <label for="TrangThai"> FALSE</label><br />
+    </div>
+    <button type="submit" class="btn btn-primary">Lưu</button>
+  </form>
+</div>

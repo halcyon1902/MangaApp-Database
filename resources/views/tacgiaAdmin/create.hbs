@@ -1,12 +1,12 @@
 <div class="mt-4">
-  <h3>Thêm Thể Loại</h3>
+  <h3>Thêm tác giả</h3>
 
-  <form method="POST" action="/theloai/store">
+  <form method="POST" action="/tacgiaAdmin/store">
     <div class="form-group">
-      <label for="TenTheLoai">Tên Thể Loại</label>
+      <label for="TenTacGia">Tên Tác Giả</label>
       <input
         type="Text"
-        name="TenTheLoai"
+        name="TenTacGia"
         class="form-control"
         id="exampleInputEmail1"
         aria-describedby="emailHelp"
@@ -14,10 +14,10 @@
       />
     </div>
 
-    <input type="radio" name="TrangThai" value="true" />
+    <input type="radio" name="TrangThai" value="true" checked="true" />
     <label for="TrangThai">TRUE</label><br />
     <input type="radio" name="TrangThai" value="false" />
     <label for="TrangThai"> FALSE</label><br />
-    <button type="submit" class="btn btn-primary">Thêm Thể Loại</button>
+    <button type="submit" class="btn btn-primary">Thêm Tác Giả</button>
   </form>
 </div>

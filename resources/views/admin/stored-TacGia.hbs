@@ -1,0 +1,29 @@
+<div class="mt-4">
+  <h3>Danh Sách Tác Giả</h3>
+
+  <table class="table mt-4">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Tên tác giả</th>
+        <th scope="col" colspan="2">Trạng thái</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each tacgia}}
+        <tr>
+          <th scope="row">{{sum @index 1}}</th>
+          <td>{{this.TenTacGia}}</td>
+          <td>{{this.TrangThai}}</td>
+          <td>
+            <a
+              href="/tacgiaAdmin/{{this._id}}/edit"
+              class="btn btn-link"
+            >Sửa</a>
+            <a href="/tacgia" class="btn btn-link">Ẩn/Hiện</a>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

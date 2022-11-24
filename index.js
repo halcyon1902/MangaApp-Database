@@ -1,4 +1,3 @@
-// const express = require('express');
 const express = require("express");
 const path = require("path");
 const { engine } = require("express-handlebars");
@@ -7,6 +6,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
+const methodOverride = require("method-override");
 const session = require("express-session");
 const flash = require("connect-flash");
 var bodyParser = require("body-parser");
@@ -49,6 +49,7 @@ app.use(
   })
 );
 app.use(flash());
+app.use(methodOverride("_method"));
 // khi send request sẽ thông báo dưới terminal
 app.use(morgan("common"));
 
@@ -59,6 +60,9 @@ app.engine(
   "hbs",
   engine({
     extname: ".hbs",
+    helpers: {
+      sum: (a, b) => a + b,
+    },
   })
 );
 app.set("view engine", "hbs");
@@ -83,10 +87,10 @@ app.use("/TaiKhoan", taikhoanRoute);
 app.use("/Chapter", chapterRoute);
 app.use("/BinhLuan", binhluanRoute);
 
-app.use("/home", siteRoutee);
-app.use("/loginadmin", loginRoutes);
-app.use("/tacgia", tacgiaAdminRoutes);
-app.use("/theloai", theloaiAdminRoutes);
+// app.use("/home", siteRoutee);
+// app.use("/loginadmin", loginRoutes);
+// app.use("/tacgia", tacgiaAdminRoutes);
+// app.use("/theloai", theloaiAdminRoutes);
 
 //kiểm tra port hoạt động ở 8000
 app.listen(process.env.PORT || 8000, () => {

@@ -1,0 +1,29 @@
+<div class="mt-4">
+  <h3>Danh Sách Thể Loại</h3>
+
+  <table class="table mt-4">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Tên thể loại</th>
+        <th scope="col" colspan="2">Trạng thái</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each theloai}}
+        <tr>
+          <th scope="row">{{sum @index 1}}</th>
+          <td>{{this.TenTheLoai}}</td>
+          <td>{{this.TrangThai}}</td>
+          <td>
+            <a
+              href="/theloaiAdmin/{{this._id}}/edit"
+              class="btn btn-link"
+            >Sửa</a>
+            <a href="/theloai" class="btn btn-link">Ẩn/Hiện</a>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

@@ -1,9 +1,11 @@
 const express = require("express");
-const tacgiaController = require("../controllerAdmin/TacGiaController");
+const tacgiaAdminController = require("../controllerAdmin/TacGiaAdminController");
 const router = express.Router();
 
-router.get("/create", tacgiaController.create);
-router.post("/store", tacgiaController.store);
+router.get("/create", tacgiaAdminController.create);
+router.post("/store", tacgiaAdminController.store);
+router.get("/:id/edit", tacgiaAdminController.edit);
+router.put("/:id", tacgiaAdminController.update);
 
 //show thong tin 1 object
 // router.use("/:id", loginController.show);

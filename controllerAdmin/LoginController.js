@@ -11,14 +11,20 @@ class LoginController {
     const user = await TaiKhoan.findOne({ TaiKhoan: req.query.TaiKhoan });
     if (!user) {
       req.flash("message", "Sai tài khoản hoặc mật khẩu!!!");
-    }
-    const validPassword = await bcrypt.compare(req.query.MatKhau, user.MatKhau);
-    if (!validPassword) {
-      req.flash("message", "Sai tài khoản hoặc mật khẩu!!!");
-      res.redirect();
-    }
-    if (user && validPassword) {
-      res.redirect("/");
+      res.redirect("");
+      console.log("Sai tài khoản hoặc mật khẩu!!!");
+    } else {
+      const validPassword = await bcrypt.compare(
+        req.query.MatKhau,
+        user.MatKhau
+      );
+      if (!validPassword) {
+        req.flash("message", "Sai tài khoản hoặc mật khẩu!!!");
+        res.redirect("");
+      }
+      if (user && validPassword) {
+        res.redirect("/");
+      }
     }
   };
 

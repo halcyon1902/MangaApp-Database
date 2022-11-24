@@ -1,11 +1,8 @@
-
-<%if (message && message!=""){%>
+{{#if message}}
   <div class="alert alert-success">
-    <%= message%>
+    {{message}}
   </div>
-<%>
-}
-
+{{/if}}
 
 <div class="mt-4">
   <form method="GET" action="/loginadmin/login">
