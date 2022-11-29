@@ -24,6 +24,7 @@ const loginRoutes = require("./routerAdmin/login");
 const tacgiaAdminRoutes = require("./routerAdmin/tacgia");
 const theloaiAdminRoutes = require("./routerAdmin/theloai");
 const taikhoanAdminRoutes = require("./routerAdmin/taikhoan");
+const chapterAdminRoutes = require("./routerAdmin/chapter");
 const adminRoutes = require("./routerAdmin/admin");
 
 const route = require("./routerAdmin");
@@ -42,6 +43,7 @@ app.use(
     extended: true,
   })
 );
+
 app.use(
   session({
     secret: "secret",
