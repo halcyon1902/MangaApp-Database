@@ -5,7 +5,7 @@ const {
 } = require("../util/mongoose");
 
 class ChapterAdminController {
-  //[Get] Admin/stored/truyen
+  //[Get] chapterAdmin/stored/:id
   storedChapter(req, res, next) {
     var truyenID = req.params.id;
     Chapter.find({ Truyen: req.params.id })
@@ -18,13 +18,13 @@ class ChapterAdminController {
       .catch(next);
   }
 
-  //[GET] /truyen/create
+  //[GET] chapterAdmin/create/:id
   create(req, res, next) {
     var truyenID = req.params.id;
     res.render("chapterAdmin/create", { truyenID });
   }
 
-  //[POST] /truyen/create
+  //[POST] /chapterAdmin/create
   store = async (req, res) => {
     try {
       const newChapter = new Chapter(req.body);
@@ -45,7 +45,7 @@ class ChapterAdminController {
     }
   };
 
-  //[GET] /truyen/:id/edit
+  //[GET] /chapterAdmin/:id/edit
   edit(req, res, next) {
     Chapter.findById(req.params.id)
       .then((chapter) => {
@@ -55,7 +55,7 @@ class ChapterAdminController {
       })
       .catch(next);
   }
-  //[PUT] /truyen/:id
+  //[PUT] /chapterAdmin/:id
   update(req, res, next) {
     const chapter = new Chapter(req.body);
 
@@ -68,7 +68,7 @@ class ChapterAdminController {
       .catch(next);
   }
 
-  //[PUT] /truyen/trangthai/:id
+  //[PUT] /chapterAdmin/trangthai/:id
   changeStatus = async (req, res, next) => {
     const chapter = await Chapter.findById(req.params.id);
     chapter

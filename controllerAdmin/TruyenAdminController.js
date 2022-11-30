@@ -22,7 +22,7 @@ class TruyenAdminController {
     console.log(req.body.TacGias);
     truyen
       .save()
-      .then(() => res.redirect("/"))
+      .then(() => res.redirect("/admin/stored/tacgia"))
       .catch((error) => {});
   }
   //[GET] /truyen/:id/edit

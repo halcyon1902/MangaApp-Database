@@ -17,7 +17,7 @@ class TacGiaAdminController {
     const tacgia = new TacGia(req.body);
     tacgia
       .save()
-      .then(() => res.redirect("/"))
+      .then(() => res.redirect("/admin/stored/tacgia"))
       .catch((error) => {});
   }
   //[GET] /tacgia/:id/edit

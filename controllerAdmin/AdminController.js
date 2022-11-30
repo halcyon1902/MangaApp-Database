@@ -39,14 +39,36 @@ class AdminController {
   }
 
   //[Get] Admin/stored/truyen
-  storedTruyen(req, res, next) {
-    Truyen.find({})
-      .then((truyen) =>
-        res.render("admin/stored-Truyen", {
-          truyen: mutipleMongooseToObject(truyen),
-        })
-      )
-      .catch(next);
+  // storedTruyen(req, res, next) {
+  //   Truyen.find({})
+  //     .then((truyen) =>
+  //       res.render("admin/stored-Truyen", {
+  //         truyen: mutipleMongooseToObject(truyen),
+  //       })
+  //     )
+  //     .catch(next);
+  // }
+
+  storedTruyen = async (req, res, next) => {
+    const truyen = await Truyen.find({});
+    for (let i = 0; i < truyen.length; i++) {
+      var listTheLoai = []
+      var listTacGia = []
+      for (let j = 0; j < truyen[i].TheLoais.length; j++) {
+        var theLoai = await TheLoai.findById(truyen[i].TheLoais[j])
+        listTheLoai[j] = theLoai.TenTheLoai;
+      }
+      for (let e = 0; e < truyen[i].TacGias.length; e++) {
+        var tacgia = await TacGia.findById(truyen[i].TacGias[e])
+        listTacGia[e] = tacgia.TenTacGia;
+      }
+      truyen[i].TheLoais = listTheLoai;
+      truyen[i].TacGias = listTacGia;
+      
+    }
+    res.render("admin/stored-Truyen", {
+      truyen: mutipleMongooseToObject(truyen),
+    })
   }
 }
 
