@@ -61,6 +61,10 @@ const TruyenSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  LuotXemThang: {
+    type: Number,
+    default: 0,
+  },
   LuotTheoDoi: {
     type: Number,
   },
@@ -69,6 +73,10 @@ const TruyenSchema = new mongoose.Schema({
     default: new Date().toISOString(),
   },
   NgayCapNhat: {
+    type: Date,
+    default: new Date().toISOString(),
+  },
+  NgayXepHang: {
     type: Date,
     default: new Date().toISOString(),
   },
