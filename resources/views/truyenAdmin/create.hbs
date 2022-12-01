@@ -1,62 +1,102 @@
+<style type='text/css'>
+  input[name=TacGias] {
+    pointer-events: none;
+  }
+
+  input[name=TheLoais] {
+    pointer-events: none;
+  }
+</style>
 <div class="mt-4">
   <h3>Thêm Truyện</h3>
 
-  <form method="POST" action="/truyenAdmin/store">
+  <form name="create-form" method="POST" action="/truyenAdmin/store">
     <div class="form-group">
       <label for="TenTruyen">Tên Truyện</label>
-      <input
-        type="Text"
-        name="TenTruyen"
-        class="form-control"
-        id="exampleInputEmail1"
-        aria-describedby="emailHelp"
-        placeholder="Nhập tên tác giả..."
-      />
+      <input type="Text" name="TenTruyen" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+        placeholder="Nhập tên tác giả..." />
     </div>
     <div class="form-group">
       <label for="TheLoais">Thể loại</label>
-      <input
-        type="Text"
-        name="TheLoais"
-        class="form-control"
-        id="exampleInputEmail1"
-        aria-describedby="emailHelp"
-        placeholder="Nhập tên thể loại"
-      />
+      <input type="Text" name="TheLoais" class="form-control" id="theloais" aria-describedby="emailHelp"
+        placeholder="Nhập tên thể loại" />
+
+      {{!-- <form id="theloai-form"> --}}
+        <div class="col-sm-6 col-lg-4">
+          {{#each tenTheLoai}}
+          <input onclick="HienThiTheLoai()" type="checkbox" id="theloai" value="{{this}}">{{this}}<br>
+          <br>
+          {{/each}}
+          <br>
+        </div>
+        {{!--
+      </form> --}}
     </div>
 
     <div class="form-group">
       <label for="TacGias">Nhập tác giả</label>
-      <input
-        type="Text"
-        name="TacGias"
-        class="form-control"
-        id="exampleInputEmail1"
-        aria-describedby="emailHelp"
-        placeholder="Nhập tên tác giả..."
-      />
+      <input type="Text" name="TacGias" class="form-control" id="tacgias" aria-describedby="emailHelp"
+        placeholder="Nhập tên tác giả..." />
     </div>
+
+    {{!-- <form id="tacgia-form"> --}}
+      <div class="col-sm-6 col-lg-4">
+        {{#each tenTacGia}}
+        <input onclick="HienThiTacGia()" type="checkbox" id="tacgia" value="{{this}}">{{this}}<br>
+        <br>
+        {{/each}}
+        <br>
+      </div>
+      {{!--
+    </form> --}}
+
+
     <div class="form-group">
       <label for="GioiThieu">Nhập Giới Thiệu</label>
-      <textarea
-        name="GioiThieu"
-        class="form-control"
-        id="exampleInputEmail1"
-        aria-describedby="emailHelp"
-        placeholder="Nhập tên tác giả..."
-      ></textarea>
+      <textarea name="GioiThieu" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+        placeholder="Nhập tên tác giả..."></textarea>
     </div>
     <div class="form-group">
       <label for="AnhBia">Ảnh Bìa</label>
-      <input
-        type="Text"
-        name="AnhBia"
-        class="form-control"
-        id="exampleInputEmail1"
-        aria-describedby="emailHelp"
-        placeholder="Nhập tên tác giả..."
-      />
+      <input type="Text" name="AnhBia" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+        placeholder="Nhập tên tác giả..." />
     </div>
-    <button type="submit" class="btn btn-primary">Thêm Truyện</button>
+    <button onclick="clickXacNhan()" type="submit" class="btn btn-primary">Thêm Truyện</button>
   </form>
 </div>
+
+
+<script>
+
+  function HienThiTheLoai() {
+    var theloai = document.forms[0];
+    var tacgia = document.getElementById("tacgias").value;
+    var txt = "";
+    var i;
+    for (i = 0; i < theloai.length; i++) {
+      if (theloai[i].checked) {
+        txt = txt + theloai[i].value + ",";
+      }
+    }
+    txt = txt.replace(tacgia, "");
+    document.getElementById("theloais").value = "" + txt;
+  }
+
+  function HienThiTacGia() {
+    var tacgia = document.forms[0];
+    var theloai = document.getElementById("theloais").value;
+    var txt2 = "";
+    var i;
+    for (i = 0; i < tacgia.length; i++) {
+      if (tacgia[i].checked) {
+        txt2 = txt2 + tacgia[i].value + ",";
+      }
+    }
+    txt2 = txt2.replace(theloai, "");
+    document.getElementById("tacgias").value = "" + txt2;
+  }
+  function clickXacNhan() {
+    const form = document.forms[0];
+    form.submit();
+  }
+</script>

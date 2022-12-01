@@ -17,7 +17,7 @@ class TheLoaiAdminController {
     const theLoai = new TheLoai(req.body);
     theLoai
       .save()
-      .then(() => res.redirect("/admin/stored/tacgia"))
+      .then(() => res.redirect("/admin/stored/theloai"))
       .catch((error) => {});
   }
 

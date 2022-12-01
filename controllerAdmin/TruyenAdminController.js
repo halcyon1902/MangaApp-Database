@@ -1,4 +1,4 @@
-const { TaiKhoan, Truyen, TacGia } = require("../model/model");
+const { TaiKhoan, Truyen, TacGia, TheLoai } = require("../model/model");
 const {
   mutipleMongooseToObject,
   mongooseToObject,
@@ -6,24 +6,46 @@ const {
 
 class TruyenAdminController {
   //[GET] /truyen/create
-  create(req, res, next) {
-    res.render("truyenAdmin/create");
-  }
+  create = async (req, res, next) => {
+    // res.render("truyenAdmin/create");
+    const tacgia = await TacGia.find({});
+    const theloai = await TheLoai.find({});
+    const tenTacGia = [];
+    const tenTheLoai = [];
+    for (let i = 0; i < tacgia.length; i++) {
+      tenTacGia.push(tacgia[i].TenTacGia);
+    }
+    for (let i = 0; i < theloai.length; i++) {
+      tenTheLoai.push(theloai[i].TenTheLoai);
+    }
+    res.render("truyenAdmin/create", { tenTacGia, tenTheLoai });
+  };
 
   //[POST] /truyen/create
-  store(req, res, next) {
+  store = async(req, res, next) => {
     const truyen = new Truyen(req.body);
+    var tenTacGias = truyen.TacGias[0].split(",");
+    var tenTheLoais = truyen.TheLoais[0].split(",");
+    tenTacGias.splice(tenTheLoais.length -1,1);
+    tenTheLoais.splice(tenTheLoais.length -1,1);
+    const theloaiIDs = []
+    const tacGiaIDs = []
 
-    var tacgias = truyen.TacGias[0].split(",");
-    var theloais = truyen.TheLoais[0].split(",");
-    truyen.TacGias = tacgias;
-    truyen.TheLoais = theloais;
-    req.body.TacGias = tacgias;
-    console.log(req.body.TacGias);
-    truyen
-      .save()
-      .then(() => res.redirect("/admin/stored/tacgia"))
-      .catch((error) => {});
+
+    for (let i = 0; i < tenTheLoais.length; i++) {
+      var theLoai = await TheLoai.findOne({TenTheLoai: tenTheLoais[i]})
+      theloaiIDs.push(theLoai.id);
+    }
+    for (let i = 0; i < tenTacGias.length; i++) {
+      var tacGia = await TacGia.findOne({TenTacGia: tenTacGias[i]})
+      
+      tacGiaIDs.push(tacGia.id);
+    }
+    truyen.TacGias = tacGiaIDs;
+  
+    truyen.TheLoais = theloaiIDs;
+    truyen.save();
+    res.redirect("/admin/stored/truyen");
   }
   //[GET] /truyen/:id/edit
   edit(req, res, next) {
