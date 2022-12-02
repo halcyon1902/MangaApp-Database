@@ -7,67 +7,123 @@
     pointer-events: none;
   }
 </style>
-<div class="mt-4">
-  <h3>Thêm Truyện</h3>
+<div class='mt-4'>
+  <h3>
+    Thêm Truyện
+  </h3>
 
-  <form name="create-form" method="POST" action="/truyenAdmin/store">
-    <div class="form-group">
-      <label for="TenTruyen">Tên Truyện</label>
-      <input type="Text" name="TenTruyen" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-        placeholder="Nhập tên tác giả..." />
+  <form name='create-form' method='POST' action='/truyenAdmin/store'>
+    <div class='form-group'>
+      <label for='TenTruyen'>
+        Tên Truyện
+      </label>
+      <input
+        type='Text'
+        name='TenTruyen'
+        class='form-control'
+        id='exampleInputEmail1'
+        aria-describedby='emailHelp'
+        placeholder='Nhập tên truyện...'
+      />
     </div>
-    <div class="form-group">
-      <label for="TheLoais">Thể loại</label>
-      <input type="Text" name="TheLoais" class="form-control" id="theloais" aria-describedby="emailHelp"
-        placeholder="Nhập tên thể loại" />
+    <div class='form-group'>
+      <label for='TheLoais'>
+        Thể loại
+      </label>
+      <input
+        type='Text'
+        name='TheLoais'
+        class='form-control'
+        id='theloais'
+        aria-describedby='emailHelp'
+        placeholder='Nhập tên thể loại'
+      />
 
-      {{!-- <form id="theloai-form"> --}}
-        <div class="col-sm-6 col-lg-4">
+      {{! <form id="theloai-form"> }}
+      <div class='mt-4'>
+        <div class='row'>
           {{#each tenTheLoai}}
-          <input onclick="HienThiTheLoai()" type="checkbox" id="theloai" value="{{this}}">{{this}}<br>
-          <br>
+            <div class='col-sm-6 col-lg-2'>
+              <input
+                onclick='HienThiTheLoai()'
+                type='checkbox'
+                id='theloai'
+                value="{{this}}"
+              />{{this}}
+            </div>
           {{/each}}
-          <br>
         </div>
-        {{!--
-      </form> --}}
-    </div>
-
-    <div class="form-group">
-      <label for="TacGias">Nhập tác giả</label>
-      <input type="Text" name="TacGias" class="form-control" id="tacgias" aria-describedby="emailHelp"
-        placeholder="Nhập tên tác giả..." />
-    </div>
-
-    {{!-- <form id="tacgia-form"> --}}
-      <div class="col-sm-6 col-lg-4">
-        {{#each tenTacGia}}
-        <input onclick="HienThiTacGia()" type="checkbox" id="tacgia" value="{{this}}">{{this}}<br>
-        <br>
-        {{/each}}
-        <br>
       </div>
-      {{!--
-    </form> --}}
 
+      {{!
+      </form> }}
+    </div>
 
-    <div class="form-group">
-      <label for="GioiThieu">Nhập Giới Thiệu</label>
-      <textarea name="GioiThieu" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-        placeholder="Nhập tên tác giả..."></textarea>
+    <div class='form-group'>
+      <label for='TacGias'>
+        Nhập tác giả
+      </label>
+      <input
+        type='Text'
+        name='TacGias'
+        class='form-control'
+        id='tacgias'
+        aria-describedby='emailHelp'
+        placeholder='Nhập tên tác giả...'
+      />
     </div>
-    <div class="form-group">
-      <label for="AnhBia">Ảnh Bìa</label>
-      <input type="Text" name="AnhBia" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-        placeholder="Nhập tên tác giả..." />
+
+    {{! <form id="tacgia-form"> }}
+    <div class='mt-4'>
+      <div class='row'>
+        {{#each tenTacGia}}
+          <div class='col-sm-6 col-lg-2'>
+            <input
+              onclick='HienThiTacGia()'
+              type='checkbox'
+              id='tacgia'
+              value="{{this}}"
+            />{{this}}
+          </div>
+        {{/each}}
+      </div>
     </div>
-    <button onclick="clickXacNhan()" type="submit" class="btn btn-primary">Thêm Truyện</button>
+    <br />
+    {{!
+    </form> }}
+
+    <div class='form-group'>
+      <label for='GioiThieu'>
+        Nhập Giới Thiệu
+      </label>
+      <textarea
+        name='GioiThieu'
+        class='form-control'
+        id='exampleInputEmail1'
+        aria-describedby='emailHelp'
+        placeholder='Nhập tên tác giả...'
+      ></textarea>
+    </div>
+    <div class='form-group'>
+      <label for='AnhBia'>
+        Ảnh Bìa
+      </label>
+      <input
+        type='Text'
+        name='AnhBia'
+        class='form-control'
+        id='exampleInputEmail1'
+        aria-describedby='emailHelp'
+        placeholder='Nhập tên tác giả...'
+      />
+    </div>
+    <button onclick='clickXacNhan()' type='submit' class='btn btn-primary'>
+      Thêm Truyện
+    </button>
   </form>
 </div>
 
-
 <script>
-
   function HienThiTheLoai() {
     var theloai = document.forms[0];
     var tacgia = document.getElementById("tacgias").value;

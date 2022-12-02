@@ -7,9 +7,8 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Tên truyện</th>
-        <th scope="col">Ảnh Bìa</th>
-        <th scope="col">Thể loại</th>
-        <th scope="col">Tác Giả</th>
+        <th scope="col" style="width: 140px;">Thể loại</th>
+        <th scope="col" style="width: 140px;">Tác Giả</th>
         <th scope="col">Giới Thiệu</th>
         <th scope="col">Ngày Tạo</th>
         <th scope="col">Ngày Cập Nhật</th>
@@ -25,15 +24,15 @@
           <th scope="row">{{sum @index 1}}</th>
           <td>{{this.TenTruyen}}</td>
           <td>
-            <img
-            style="width: 100px;
-                  height: 150px;"      
-            src="{{this.AnhBia}}"
-            alt="{{this.TenTruyen}}"
-             />
+          {{#each this.TheLoais}}
+            <li>{{this}}</li>
+          {{/each}}
           </td>
-          <td>{{this.TheLoais}}</td>
-          <td>{{this.TacGias}}</td>
+          <td>
+          {{#each this.TacGias}}
+            <li>{{this}}</li>
+          {{/each}}
+          </td>
           <td><p
               class="card-text"
               style="overflow: hidden;
@@ -111,6 +110,7 @@
 
 <script>
 
+  
   document.addEventListener('DOMContentLoaded', function(){ var truyenID;
   var xacnhanForm = document.forms['on-off-trangthai-form'];
    var btnXanNhan =

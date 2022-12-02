@@ -26,19 +26,19 @@ class TruyenAdminController {
     const truyen = new Truyen(req.body);
     var tenTacGias = truyen.TacGias[0].split(",");
     var tenTheLoais = truyen.TheLoais[0].split(",");
-    tenTacGias.splice(tenTheLoais.length -1,1);
+    tenTacGias.splice(tenTacGias.length -1,1);
     tenTheLoais.splice(tenTheLoais.length -1,1);
-    const theloaiIDs = []
-    const tacGiaIDs = []
+    const theloaiIDs = [];
+    const tacGiaIDs = [];
 
 
+    console.log(tenTheLoais);
     for (let i = 0; i < tenTheLoais.length; i++) {
       var theLoai = await TheLoai.findOne({TenTheLoai: tenTheLoais[i]})
       theloaiIDs.push(theLoai.id);
     }
     for (let i = 0; i < tenTacGias.length; i++) {
       var tacGia = await TacGia.findOne({TenTacGia: tenTacGias[i]})
-      
       tacGiaIDs.push(tacGia.id);
     }
     truyen.TacGias = tacGiaIDs;
