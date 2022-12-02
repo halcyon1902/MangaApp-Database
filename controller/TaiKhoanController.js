@@ -51,14 +51,11 @@ const TaiKhoanController = {
     try {
       const user = await TaiKhoan.findOne({ TaiKhoan: req.body.TaiKhoan });
       if (!user) {
-        res.status(404).json("Sai tên tài khoản");
+        return res.status(404).json("Sai tên tài khoản");
       }
-      const validPassword = await bcrypt.compare(
-        req.body.MatKhau,
-        user.MatKhau
-      );
+      const validPassword = await bcrypt.compare(req.body.MatKhau, user.MatKhau);
       if (!validPassword) {
-        res.status(404).json("Sai mật khẩu");
+        return res.status(404).json("Sai mật khẩu");
       }
       if (user && validPassword) {
         res.status(200).json(user);
