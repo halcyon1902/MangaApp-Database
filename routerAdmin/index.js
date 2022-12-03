@@ -6,6 +6,7 @@ const taikhoanRouter = require("./taikhoan");
 const truyenRouter = require("./truyen");
 const adminRouter = require("./admin");
 const chapterRouter = require("./chapter");
+const binhluanRouter = require("./binhluan");
 
 function route(app) {
   app.use("/loginadmin", loginRouter);
@@ -14,6 +15,7 @@ function route(app) {
   app.use("/taikhoanAdmin", taikhoanRouter);
   app.use("/truyenAdmin", truyenRouter);
   app.use("/chapterAdmin", chapterRouter);
+  app.use("/binhluanAdmin", binhluanRouter);
   app.use("/admin", adminRouter);
   app.use("/", siteRouter);
 }

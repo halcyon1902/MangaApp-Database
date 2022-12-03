@@ -60,12 +60,7 @@ app.engine(
     extname: ".hbs",
     helpers: {
       sum: (a, b) => a + b,
-      checked : (v1, v2) => {
-        if(v1 == v2) {
-          return "checked";
-        }
-        return "";
-      },
+      
     },
   })
 );

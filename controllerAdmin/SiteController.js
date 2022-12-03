@@ -13,10 +13,6 @@ class SiteController {
       .catch(next);
   }
 
-  // show thong tin 1 object
-  //   show(req, res) {
-  //     res.send("tai khoang detail");
-  //   }
 }
 
 module.exports = new SiteController();

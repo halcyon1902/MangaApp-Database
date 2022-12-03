@@ -10,7 +10,7 @@ class TacGiaAdminController {
     res.render("tacgiaAdmin/create");
   }
 
-  //[POST] /tacgia/create
+  //[POST] /tacgia/store
   store(req, res, next) {
     console.log(req.body);
 

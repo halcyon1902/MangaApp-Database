@@ -38,17 +38,6 @@ class AdminController {
       .catch(next);
   }
 
-  //[Get] Admin/stored/truyen
-  // storedTruyen(req, res, next) {
-  //   Truyen.find({})
-  //     .then((truyen) =>
-  //       res.render("admin/stored-Truyen", {
-  //         truyen: mutipleMongooseToObject(truyen),
-  //       })
-  //     )
-  //     .catch(next);
-  // }
-
   storedTruyen = async (req, res, next) => {
     const truyen = await Truyen.find({});
     for (let i = 0; i < truyen.length; i++) {
