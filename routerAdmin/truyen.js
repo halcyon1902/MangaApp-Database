@@ -7,7 +7,6 @@ router.post("/store", truyenAdminController.store);
 router.get("/:id/edit", truyenAdminController.edit);
 router.put("/:id", truyenAdminController.update);
 router.put("/trangthai/:id", truyenAdminController.changeStatus);
+router.put("/tinhtrang/:id", truyenAdminController.changeTinhTrang);
 
-//show thong tin 1 object
-// router.use("/:id", loginController.show);
 module.exports = router;

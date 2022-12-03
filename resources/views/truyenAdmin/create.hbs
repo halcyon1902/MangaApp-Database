@@ -17,105 +17,64 @@
       <label for='TenTruyen'>
         Tên Truyện
       </label>
-      <input
-        type='Text'
-        name='TenTruyen'
-        class='form-control'
-        id='exampleInputEmail1'
-        aria-describedby='emailHelp'
-        placeholder='Nhập tên truyện...'
-      />
+      <input type='Text' name='TenTruyen' class='form-control' id='exampleInputEmail1' aria-describedby='emailHelp'
+        placeholder='Nhập tên truyện...' />
     </div>
     <div class='form-group'>
       <label for='TheLoais'>
         Thể loại
       </label>
-      <input
-        type='Text'
-        name='TheLoais'
-        class='form-control'
-        id='theloais'
-        aria-describedby='emailHelp'
-        placeholder='Nhập tên thể loại'
-      />
+      <input type='Text' name='TheLoais' class='form-control' id='theloais' aria-describedby='emailHelp'
+        placeholder='Nhập tên thể loại' />
 
-      {{! <form id="theloai-form"> }}
+      {{! Hien thi tat ca the loai co trong db }}
       <div class='mt-4'>
         <div class='row'>
           {{#each tenTheLoai}}
-            <div class='col-sm-6 col-lg-2'>
-              <input
-                onclick='HienThiTheLoai()'
-                type='checkbox'
-                id='theloai'
-                value="{{this}}"
-              />{{this}}
-            </div>
+          <div class='col-sm-6 col-lg-2'>
+            <input onclick='HienThiTheLoai()' type='checkbox' id='theloai' value="{{this}}" />{{this}}
+          </div>
           {{/each}}
         </div>
       </div>
 
-      {{!
-      </form> }}
+
     </div>
 
     <div class='form-group'>
       <label for='TacGias'>
         Nhập tác giả
       </label>
-      <input
-        type='Text'
-        name='TacGias'
-        class='form-control'
-        id='tacgias'
-        aria-describedby='emailHelp'
-        placeholder='Nhập tên tác giả...'
-      />
+      <input type='Text' name='TacGias' class='form-control' id='tacgias' aria-describedby='emailHelp'
+        placeholder='Nhập tên tác giả...' />
     </div>
 
-    {{! <form id="tacgia-form"> }}
+    {{! Hien thi tat ca tac gia co trong db }}
     <div class='mt-4'>
       <div class='row'>
         {{#each tenTacGia}}
-          <div class='col-sm-6 col-lg-2'>
-            <input
-              onclick='HienThiTacGia()'
-              type='checkbox'
-              id='tacgia'
-              value="{{this}}"
-            />{{this}}
-          </div>
+        <div class='col-sm-6 col-lg-2'>
+          <input onclick='HienThiTacGia()' type='checkbox' id='tacgia' value="{{this}}" />{{this}}
+        </div>
         {{/each}}
       </div>
     </div>
     <br />
-    {{!
-    </form> }}
+
 
     <div class='form-group'>
       <label for='GioiThieu'>
         Nhập Giới Thiệu
       </label>
-      <textarea
-        name='GioiThieu'
-        class='form-control'
-        id='exampleInputEmail1'
-        aria-describedby='emailHelp'
-        placeholder='Nhập tên tác giả...'
-      ></textarea>
+      <textarea name='GioiThieu' class='form-control' id='exampleInputEmail1' aria-describedby='emailHelp'
+        placeholder='Nhập tên tác giả...'></textarea>
     </div>
     <div class='form-group'>
       <label for='AnhBia'>
         Ảnh Bìa
       </label>
-      <input
-        type='Text'
-        name='AnhBia'
-        class='form-control'
-        id='exampleInputEmail1'
-        aria-describedby='emailHelp'
-        placeholder='Nhập tên tác giả...'
-      />
+      <input type='Text' name='AnhBia' class='form-control' id='exampleInputEmail1' aria-describedby='emailHelp'
+        placeholder='Nhập tên tác giả...' />
     </div>
     <button onclick='clickXacNhan()' type='submit' class='btn btn-primary'>
       Thêm Truyện

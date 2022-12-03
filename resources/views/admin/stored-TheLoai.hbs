@@ -1,6 +1,6 @@
 <div class="mt-4">
   <h3>Danh Sách Thể Loại</h3>
-<a href="/theloaiadmin/create">Thêm Thể Loại</a>
+  <a href="/theloaiadmin/create">Thêm Thể Loại</a>
   <table class="table mt-4">
     <thead>
       <tr>
@@ -11,24 +11,16 @@
     </thead>
     <tbody>
       {{#each theloai}}
-        <tr>
-          <th scope="row">{{sum @index 1}}</th>
-          <td>{{this.TenTheLoai}}</td>
-          <td>{{this.TrangThai}}</td>
-          <td>
-            <a
-              href="/theloaiAdmin/{{this._id}}/edit"
-              class="btn btn-link"
-            >Sửa</a>
-            <a
-              href=""
-              class="btn btn-link"
-              data-toggle="modal"
-              data-id="{{this._id}}"
-              data-target="#on-off-trangthai"
-            >Ẩn/Hiện</a>
-          </td>
-        </tr>
+      <tr>
+        <th scope="row">{{sum @index 1}}</th>
+        <td>{{this.TenTheLoai}}</td>
+        <td>{{this.TrangThai}}</td>
+        <td>
+          <a href="/theloaiAdmin/{{this._id}}/edit" class="btn btn-link">Sửa</a>
+          <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}"
+            data-target="#on-off-trangthai">Ẩn/Hiện</a>
+        </td>
+      </tr>
       {{/each}}
     </tbody>
   </table>
@@ -41,12 +33,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Thay đổi trạng thái của tác giả</h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -55,30 +42,27 @@
       </div>
       <div class="modal-footer">
         <button type="button" id="btnXacNhan" class="btn btn-danger">Xác nhận</button>
-        <button
-          type="button"
-          class="btn btn-secondary"
-          data-dismiss="modal"
-        >Hủy</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
       </div>
     </div>
   </div>
 </div>
 
-<form
-    name="on-off-trangthai-form"
-    method="POST"
-   
-  >
-<script>
+<form name="on-off-trangthai-form" method="POST">
+  <script>
 
-  document.addEventListener('DOMContentLoaded', function(){ var theloaiID;
-  var xacnhanForm = document.forms['on-off-trangthai-form'];
-   var btnXanNhan =
-  document.getElementById('btnXacNhan')
-  $('#on-off-trangthai').on('show.bs.modal', function (event) { var button =
-  $(event.relatedTarget) ; theloaiID = button.data('id'); });; btnXanNhan.onclick = function(){
-    xacnhanForm.action = '/theloaiAdmin/trangthai/' + theloaiID + '?_method=PUT';
-    xacnhanForm.submit() } });
+    document.addEventListener('DOMContentLoaded', function () {
+      var theloaiID;
+      var xacnhanForm = document.forms['on-off-trangthai-form'];
+      var btnXanNhan =
+        document.getElementById('btnXacNhan')
+      $('#on-off-trangthai').on('show.bs.modal', function (event) {
+        var button =
+          $(event.relatedTarget); theloaiID = button.data('id');
+      });; btnXanNhan.onclick = function () {
+        xacnhanForm.action = '/theloaiAdmin/trangthai/' + theloaiID + '?_method=PUT';
+        xacnhanForm.submit()
+      }
+    });
 
-</script>
+  </script>

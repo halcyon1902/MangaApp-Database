@@ -19,15 +19,9 @@ const chapterRoute = require("./routes/Chapter");
 const binhluanRoute = require("./routes/BinhLuan");
 const theloaiRoute = require("./routes/TheLoai");
 
-const siteRoutee = require("./routerAdmin/site");
-const loginRoutes = require("./routerAdmin/login");
-const tacgiaAdminRoutes = require("./routerAdmin/tacgia");
-const theloaiAdminRoutes = require("./routerAdmin/theloai");
-const taikhoanAdminRoutes = require("./routerAdmin/taikhoan");
-const chapterAdminRoutes = require("./routerAdmin/chapter");
-const adminRoutes = require("./routerAdmin/admin");
 
 const route = require("./routerAdmin");
+const { options } = require("./routes/TacGia");
 
 //Sử dụng để tạo file .env - sử dụng để tạo file chứa các thông tin cần bảo mật
 dotenv.config();
@@ -66,6 +60,12 @@ app.engine(
     extname: ".hbs",
     helpers: {
       sum: (a, b) => a + b,
+      checked : (v1, v2) => {
+        if(v1 == v2) {
+          return "checked";
+        }
+        return "";
+      },
     },
   })
 );
