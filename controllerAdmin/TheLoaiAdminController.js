@@ -12,8 +12,6 @@ class TheLoaiAdminController {
 
   //[POST] /theloaiadmin/create
   store(req, res, next) {
-    console.log(req.body);
-
     const theLoai = new TheLoai(req.body);
     theLoai
       .save()

@@ -40,7 +40,6 @@ class TruyenAdminController {
       tacGiaIDs.push(tacGia.id);
     }
     truyen.TacGias = tacGiaIDs;
-  
     truyen.TheLoais = theloaiIDs;
     truyen.save();
     res.redirect("/admin/stored/truyen");

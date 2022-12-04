@@ -4,10 +4,24 @@
   <form class="mt-4" method="POST" action="/theloaiAdmin/{{theloai._id}}?_method=PUT">
     <div class="form-group">
       <label for="TenTheLoai">Tên Thể loại</label>
-      <input type="Text" name="TenTheLoai" value="{{theloai.TenTheLoai}}" class="form-control" id="exampleInputEmail1"
+      <input type="Text" name="TenTheLoai" value="{{theloai.TenTheLoai}}" class="form-control" id="tenTheLoai"
         aria-describedby="emailHelp" placeholder="Nhập tên thể loại..." />
     </div>
 
-    <button type="submit" class="btn btn-primary">Lưu</button>
+    <button type="button" onclick="checked()" class="btn btn-primary">Lưu</button>
   </form>
 </div>
+
+<script>
+  function checked() {
+    const form = document.forms[0];
+    const tenTheLoai = document.getElementById('tenTheLoai').value;
+    if (tenTheLoai == "") {
+      alert("Vui lòng nhập tên thể loại");
+      return;
+    } else {
+      form.submit();
+    }
+
+  }
+</script>

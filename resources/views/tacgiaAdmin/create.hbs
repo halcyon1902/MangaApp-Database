@@ -4,14 +4,23 @@
   <form method="POST" action="/tacgiaAdmin/store">
     <div class="form-group">
       <label for="TenTacGia">Tên Tác Giả</label>
-      <input type="Text" name="TenTacGia" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+      <input type="Text" name="TenTacGia" class="form-control" id="tenTacGia" aria-describedby="emailHelp"
         placeholder="Nhập tên tác giả..." />
     </div>
-
-    <input type="radio" name="TrangThai" value="true" checked="true" />
-    <label for="TrangThai">TRUE</label><br />
-    <input type="radio" name="TrangThai" value="false" />
-    <label for="TrangThai"> FALSE</label><br />
-    <button type="submit" class="btn btn-primary">Thêm Tác Giả</button>
+    <button type="button" onclick="checked()" class="btn btn-primary">Thêm Tác Giả</button>
   </form>
 </div>
+
+<script>
+  function checked() {
+    const form = document.forms[0];
+    const tenTheLoai = document.getElementById('tenTacGia').value;
+    if (tenTheLoai == "") {
+      alert("Vui lòng nhập tên tác giả !!!");
+      return;
+    } else {
+      form.submit();
+    }
+
+  }
+</script>

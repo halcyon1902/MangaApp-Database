@@ -6,13 +6,16 @@ const {
 
 class ChapterAdminController {
   //[Get] chapterAdmin/stored/:id
-  storedChapter(req, res, next) {
-    var truyenID = req.params.id;
+  storedChapter = async(req, res, next) => {
+    
+    const truyen = await Truyen.findById(req.params.id);
+    var tenTruyen = truyen.TenTruyen;
+    var truyenID = req.params.id
     Chapter.find({ Truyen: req.params.id })
       .then((chapter) =>
         res.render("chapterAdmin/stored-chapter", {
           truyen: mutipleMongooseToObject(chapter),
-          truyenID,
+          truyenID,tenTruyen,
         })
       )
       .catch(next);

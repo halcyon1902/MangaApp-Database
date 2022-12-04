@@ -4,10 +4,24 @@
   <form class="mt-4" method="POST" action="/tacgiaAdmin/{{tacgia._id}}?_method=PUT">
     <div class="form-group">
       <label for="TenTacGia">Tên Tác Giả</label>
-      <input type="Text" name="TenTacGia" value="{{tacgia.TenTacGia}}" class="form-control" id="exampleInputEmail1"
+      <input type="Text" name="TenTacGia" value="{{tacgia.TenTacGia}}" class="form-control" id="tenTacGia"
         aria-describedby="emailHelp" placeholder="Nhập tên tác giả..." />
     </div>
 
-    <button type="submit" class="btn btn-primary">Lưu</button>
+    <button type="button" onclick="checked()" class="btn btn-primary">Lưu</button>
   </form>
 </div>
+
+<script>
+  function checked() {
+    const form = document.forms[0];
+    const tenTacGia = document.getElementById('tenTacGia').value;
+    if (tenTacGia == "") {
+      alert("Vui lòng nhập tên tác giả !!!");
+      return;
+    } else {
+      form.submit();
+    }
+
+  }
+</script>

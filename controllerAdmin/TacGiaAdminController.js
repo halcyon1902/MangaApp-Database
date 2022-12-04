@@ -12,8 +12,6 @@ class TacGiaAdminController {
 
   //[POST] /tacgia/store
   store(req, res, next) {
-    console.log(req.body);
-
     const tacgia = new TacGia(req.body);
     tacgia
       .save()

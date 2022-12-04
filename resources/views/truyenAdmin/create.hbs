@@ -17,7 +17,7 @@
       <label for='TenTruyen'>
         Tên Truyện
       </label>
-      <input type='Text' name='TenTruyen' class='form-control' id='exampleInputEmail1' aria-describedby='emailHelp'
+      <input type='Text' name='TenTruyen' class='form-control' id='tenTruyen' aria-describedby='emailHelp'
         placeholder='Nhập tên truyện...' />
     </div>
     <div class='form-group'>
@@ -66,17 +66,17 @@
       <label for='GioiThieu'>
         Nhập Giới Thiệu
       </label>
-      <textarea name='GioiThieu' class='form-control' id='exampleInputEmail1' aria-describedby='emailHelp'
+      <textarea name='GioiThieu' class='form-control' id='gioiThieu' aria-describedby='emailHelp'
         placeholder='Nhập tên tác giả...'></textarea>
     </div>
     <div class='form-group'>
       <label for='AnhBia'>
         Ảnh Bìa
       </label>
-      <input type='Text' name='AnhBia' class='form-control' id='exampleInputEmail1' aria-describedby='emailHelp'
+      <input type='Text' name='AnhBia' class='form-control' id='anhBia' aria-describedby='emailHelp'
         placeholder='Nhập tên tác giả...' />
     </div>
-    <button onclick='clickXacNhan()' type='submit' class='btn btn-primary'>
+    <button onclick='checked()' type='button' class='btn btn-primary'>
       Thêm Truyện
     </button>
   </form>
@@ -110,8 +110,38 @@
     txt2 = txt2.replace(theloai, "");
     document.getElementById("tacgias").value = "" + txt2;
   }
-  function clickXacNhan() {
+
+
+  function checked() {
     const form = document.forms[0];
-    form.submit();
+    const tenTruyen = document.getElementById('tenTruyen').value;
+    const tenTheLoai = document.getElementById('theloais').value;
+    const tenTacGia = document.getElementById('tacgias').value;
+    const gioiThieu = document.getElementById('gioiThieu').value;
+    const anhBia = document.getElementById('anhBia').value;
+
+    if (tenTruyen == "") {
+      alert("Vui lòng nhập tên truyện");
+      return;
+    }
+    else if (tenTheLoai == "") {
+      alert("Vui lòng chọn ít nhất 1 thể loại");
+      return;
+    }
+    else if (tenTacGia == "") {
+      alert("Vui lòng chọn ít nhất 1 tác giả ");
+      return;
+    }
+    else if (gioiThieu == "") {
+      alert("Vui lòng nhập giới thiệu");
+      return;
+    }
+    else if (anhBia == "") {
+      alert("Vui lòng nhập link ảnh bìa");
+      return;
+    } else {
+      form.submit();
+    }
   }
+
 </script>
