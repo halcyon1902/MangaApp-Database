@@ -16,7 +16,7 @@ class TheLoaiAdminController {
     theLoai
       .save()
       .then(() => res.redirect("/admin/stored/theloai"))
-      .catch((error) => {});
+      .catch((error) => {res.status(500).send("Thể loại đã tồn tại")});
   }
 
   //[GET] /tatheloaiadmincgia/:id/edit
@@ -33,7 +33,7 @@ class TheLoaiAdminController {
   update(req, res, next) {
     TheLoai.updateOne({ _id: req.params.id }, req.body)
       .then(() => res.redirect("/admin/stored/theloai"))
-      .catch(next);
+      .catch((error) => {res.status(500).send("Thể loại đã tồn tại")});
   }
 
   //[PUT] /theloaiadmin/trangthai/:id

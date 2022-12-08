@@ -16,7 +16,7 @@ class TacGiaAdminController {
     tacgia
       .save()
       .then(() => res.redirect("/admin/stored/tacgia"))
-      .catch((error) => {});
+      .catch((error) => {res.status(500).send("Tac Gia Da ton tai")});
   }
   //[GET] /tacgia/:id/edit
   edit(req, res, next) {
@@ -32,7 +32,7 @@ class TacGiaAdminController {
   update(req, res, next) {
     TacGia.updateOne({ _id: req.params.id }, req.body)
       .then(() => res.redirect("/admin/stored/tacgia"))
-      .catch(next);
+      .catch( (error) => {res.status(500).send("Tac Gia Da ton tai")});
   }
 
   //[PUT] /tacgia/trangthai/:id

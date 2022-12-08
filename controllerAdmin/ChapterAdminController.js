@@ -44,7 +44,7 @@ class ChapterAdminController {
 
       res.redirect("/chapterAdmin/stored/" + newChapter.Truyen);
     } catch (err) {
-      console.log(err);
+      res.status(500).send(err);
     }
   };
 
@@ -68,7 +68,7 @@ class ChapterAdminController {
 
     Chapter.updateOne({ _id: req.params.id }, req.body)
       .then(() => res.redirect("/chapterAdmin/stored/" + chapter.Truyen))
-      .catch(next);
+      .catch((error) => {res.status(500).send("Tên Chapter đã tồn tại")});
   }
 
   //[PUT] /chapterAdmin/trangthai/:id
