@@ -1,2 +1,2 @@
 # MangaApp-Database
-sử dụng nodejs-express và MongoDB 
+sử dụng nodejs-express và MongoDB BackEnd
